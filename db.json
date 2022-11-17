@@ -1,0 +1,64 @@
+{
+  "Product": [
+    {
+      "code": "E5704860",
+      "productName": "p",
+      "quantity": "1",
+      "date": "2022-11-09T23:00:00.000Z",
+      "category": "A",
+      "id": 7
+    },
+    {
+      "code": "E1234567",
+      "productName": "vice",
+      "quantity": "10",
+      "date": "2022-11-09T23:00:00.000Z",
+      "category": "B",
+      "id": 8
+    },
+    {
+      "code": "E1452368",
+      "productName": "tourne-vice",
+      "quantity": "8",
+      "date": "2022-11-09T23:00:00.000Z",
+      "category": "B",
+      "id": 10
+    },
+    {
+      "code": "E6187006",
+      "productName": "COFF",
+      "quantity": "1",
+      "date": "2022-11-09T23:00:00.000Z",
+      "category": "A",
+      "id": 11
+    },
+    {
+      "code": "E4427619",
+      "productName": "trs 2*16",
+      "quantity": "15",
+      "date": "2022-11-09T23:00:00.000Z",
+      "category": "A",
+      "id": 12
+    },
+    {
+      "code": "E6119146",
+      "productName": "pince p63",
+      "quantity": "2",
+      "date": "2022-11-09T23:00:00.000Z",
+      "category": "B",
+      "id": 13
+    },
+    {
+      "code": "E7895369",
+      "productName": "pince",
+      "quantity": "5",
+      "date": "2022-11-15T23:00:00.000Z",
+      "category": "B",
+      "id": 14
+    }
+  ],
+  "charges": [
+    {}
+  ],
+  "factures": {}
+}
