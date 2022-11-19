@@ -1,44 +1,45 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {FormGroup,FormBuilder,Validators, RequiredValidator} from '@angular/forms';
+import {FormGroup,FormBuilder,Validators} from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ApiService } from '../services/api.service';
+import { ServchargeService } from '../services/servcharge.service';
+
 @Component({
   selector: 'app-dialog-charge',
   templateUrl: './dialog-charge.component.html',
   styleUrls: ['./dialog-charge.component.scss']
 })
 export class DialogChargeComponent implements OnInit {
-  chargeForm !: FormGroup;
+  ChargeForm !: FormGroup;
   actionBtn : String = "Save";
   constructor(
     private formBuilder : FormBuilder , 
-    private api : ApiService , 
+    private servcharge : ServchargeService  , 
     @Inject(MAT_DIALOG_DATA) public editData : any,
     private dialogRef : MatDialogRef<DialogChargeComponent>
   ) { }
 
   ngOnInit(): void {
-    this.chargeForm = this.formBuilder.group({
-      date:['',Validators.required],     
+    this.ChargeForm = this.formBuilder.group({
+      date : ['',Validators.required],     
       montant:['',Validators.required],
       charge:['',Validators.required],
     });
     if(this.editData){
       this.actionBtn="Update";
-      this.chargeForm.controls['date'].setValue(this.editData.date);
-      this.chargeForm.controls['montant'].setValue(this.editData.montant);
-      this.chargeForm.controls['charge'].setValue(this.editData.charge);
+      this.ChargeForm.controls['date'].setValue(this.editData.date);
+      this.ChargeForm.controls['montant'].setValue(this.editData.montant);
+      this.ChargeForm.controls['charge'].setValue(this.editData.charge);
 
     }
   }
   addCharge(){
     if(!this.editData){
-      if(this.chargeForm.valid){
-        this.api.postCharge(this.chargeForm.value)
+      if(this.ChargeForm.valid){
+        this.servcharge.postCharge(this.ChargeForm.value)
         .subscribe({
           next:(res)=>{
-            alert("charge added successfully");
-            this.chargeForm.reset();
+            alert("Charge added successfully");
+            this.ChargeForm.reset();
             this.dialogRef.close('save');
           },
           error:()=>{
@@ -51,11 +52,11 @@ export class DialogChargeComponent implements OnInit {
     }
     }
     updateCharge(){
-      this.api.putCharge(this.chargeForm.value , this.editData.id)
+      this.servcharge.putCharge(this.ChargeForm.value , this.editData.id)
       .subscribe({
         next:(res)=>{
           alert("Charge updated successfully");
-          this.chargeForm.reset();
+          this.ChargeForm.reset();
           this.dialogRef.close('update');
         },
         error:()=>{

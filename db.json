@@ -55,10 +55,80 @@
       "date": "2022-11-15T23:00:00.000Z",
       "category": "B",
       "id": 14
+    },
+    {
+      "code": "E0213456987",
+      "productName": "hitre",
+      "quantity": "5",
+      "date": "2022-11-17T23:00:00.000Z",
+      "category": "B",
+      "id": 15
+    },
+    {
+      "code": "E0025469",
+      "productName": "router",
+      "quantity": "7",
+      "date": "2022-11-17T23:00:00.000Z",
+      "category": "C",
+      "id": 16
+    },
+    {
+      "code": "E147963",
+      "productName": "cable",
+      "quantity": "5",
+      "date": "2022-11-17T23:00:00.000Z",
+      "category": "B",
+      "id": 17
     }
   ],
-  "charges": [
-    {}
+  "Charge": [
+    {
+      "date": "2022-11-17T23:00:00.000Z",
+      "montant": "120.000",
+      "charge": "Nourriture"
+    },
+    {
+      "date": "2022-11-17T23:00:00.000Z",
+      "montant": "25.000",
+      "charge": "frais d'internet"
+    },
+    {
+      "date": "2022-11-17T23:00:00.000Z",
+      "montant": "23.000",
+      "charge": "Achat de fourniture de bureau "
+    },
+    {
+      "date": "2022-11-17T23:00:00.000Z",
+      "montant": "680.000",
+      "charge": "Carburant"
+    },
+    {
+      "date": "2022-11-17T23:00:00.000Z",
+      "montant": "1200.000",
+      "charge": "Entretien du tracteur"
+    },
+    {
+      "date": "2022-11-17T23:00:00.000Z",
+      "montant": "130.000",
+      "charge": "Loyer"
+    },
+    {
+      "date": "2022-11-17T23:00:00.000Z",
+      "montant": "500.000",
+      "charge": "Transport des supports"
+    },
+    {
+      "date": "2022-11-17T23:00:00.000Z",
+      "montant": "470.000",
+      "charge": "Cimen"
+    },
+    {
+      "date": "2022-11-17T23:00:00.000Z",
+      "montant": "240.000",
+      "charge": "Bulldozer"
+    }
   ],
-  "factures": {}
+  "Facture": [
+    {}
+  ]
 }

@@ -24,6 +24,9 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DialogChargeComponent } from './dialog-charge/dialog-charge.component';
+import { ChargeComponent } from './charge/charge.component';
+import { FactureComponent } from './facture/facture.component';
+import { StockComponent } from './stock/stock.component';
 
 @NgModule({
   
@@ -32,7 +35,10 @@ import { DialogChargeComponent } from './dialog-charge/dialog-charge.component';
     routingComponents,
     DialogComponent,
     DashboardComponent,
+    ChargeComponent,
+    FactureComponent,
     DialogChargeComponent,
+    StockComponent
 
   ],
   imports: [

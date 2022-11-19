@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class FactureComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }
