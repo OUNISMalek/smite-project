@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import * as pdfMake from 'pdfmake/build/pdfmake';
+import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 
+(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-facture',
   templateUrl: './facture.component.html',
@@ -12,5 +14,8 @@ export class FactureComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  generatePdf(){
+    const documentDefinition = { content: 'This is for testing.' };
+    pdfMake.createPdf(documentDefinition).open();
+  }
 }
