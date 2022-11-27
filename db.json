@@ -91,11 +91,40 @@
     {
       "date": "2022-11-20T23:00:00.000Z",
       "montant": "120.000",
-      "charge": "Nourriture",
+      "charge": "Ghoula",
       "id": 2
     }
   ],
   "Facture": [
-    {}
+    {
+      "code": "100",
+      "service": "Forage",
+      "quantite": "10",
+      "prix_uni_ht": "10",
+      "prix_ht": "100",
+      "tva": "20",
+      "total": "120",
+      "id": 1
+    },
+    {
+      "code": "5666",
+      "service": "zfzfsdvzgf",
+      "quantite": "266",
+      "prix_uni_ht": "220",
+      "prix_ht": "5226",
+      "tva": "5263",
+      "total": "4564245",
+      "id": 2
+    },
+    {
+      "code": "500",
+      "service": "dkzfvjkamlj",
+      "quantite": "522",
+      "prix_uni_ht": "552",
+      "prix_ht": "1000",
+      "tva": "2255",
+      "total": "220255",
+      "id": 3
+    }
   ]
 }

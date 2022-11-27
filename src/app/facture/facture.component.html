@@ -1,17 +1,95 @@
 <div class="container">
-    <img
-    width="200"
-    alt="SmiteServ"
-    src="../assets/Sans_titre-removebg-preview.png" />
-<div [align]="'end'">
-</div>
-<p>
-Adresse : Immeuble CNRPS Tataouine nord 3263 Tataouine <br/>
-Email : Smite.service@gmail.com<br/>
-Tel/ Fax : 00216 75 870 889<br/>
-GSM : 00216 95 225 630<br/>
-UI : 1599585/S <br/>
-RIB : BH-Bank – 14208208101700429341<br/>
-</p>
-<button (click)="generatePdf()">Open PDF</button>
+    <img width="200" alt="SmiteServ" src="../assets/Sans_titre-removebg-preview.png" />
+    <div [align]="'end'">
+    </div>
+    <div id="pdf-export">
+        <p>
+            Adresse : Immeuble CNRPS Tataouine nord 3263 Tataouine <br />
+            Email : Smite.service@gmail.com<br />
+            Tel/ Fax : 00216 75 870 889<br />
+            GSM : 00216 95 225 630<br />
+            UI : 1599585/S <br />
+            RIB : BH-Bank – 14208208101700429341<br />
+        </p>
+        <div style="margin-top: 10px;">
+            <mat-form-field appearance="standard">
+                <mat-label>Filter</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+            </mat-form-field>
+            <button style="margin-bottom: 12px;" mat-stroked-button (click)="openDialog()">Add charge</button>
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" matSort>
+
+                    <!-- code Column -->
+                    <ng-container matColumnDef="code">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
+                        <td mat-cell *matCellDef="let row"> {{row.code}} </td>
+                    </ng-container>
+
+                    <!-- Description Column -->
+                    <ng-container matColumnDef="service">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+                        <td mat-cell *matCellDef="let row"> {{row.service}} </td>
+                    </ng-container>
+
+                    <!-- Quantite Column -->
+                    <ng-container matColumnDef="quantite">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> QTE </th>
+                        <td mat-cell *matCellDef="let row"> {{row.quantite}} </td>
+                    </ng-container>
+
+                    <!-- Prix Unitaire Column -->
+                    <ng-container matColumnDef="prix_uni_ht">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Prix uni HTVA </th>
+                        <td mat-cell *matCellDef="let row"> {{row.prix_uni_ht}} </td>
+                    </ng-container>
+
+                    <!-- Prix Total HTVA Column -->
+                    <ng-container matColumnDef="prix_ht">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Prix Total HTVA </th>
+                        <td mat-cell *matCellDef="let row"> {{row.prix_ht}} </td>
+                    </ng-container>
+
+                    <!-- TVA Column -->
+                    <ng-container matColumnDef="tva">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> TVA (19 %)</th>
+                        <td mat-cell *matCellDef="let row"> {{row.tva}} </td>
+                    </ng-container>
+
+                    <!-- Total Column -->
+                    <ng-container matColumnDef="total">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Total TTC </th>
+                        <td mat-cell *matCellDef="let row"> {{row.total}} </td>
+                    </ng-container>
+
+                    <!--  Action Column -->
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                        <td mat-cell *matCellDef="let row">
+
+                            <button mat-icon-button (click)="editFacture(row)" color="primary">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+
+                            <button mat-icon-button (click)="deleteFacture(row.id)" color="warn">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    <!-- Row shown when there is no matching data. -->
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                    </tr>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+            </div>
+        </div>
+    </div>
+    <button (click)="generatePdf()">Open PDF</button>
 </div>

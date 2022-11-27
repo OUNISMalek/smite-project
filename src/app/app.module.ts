@@ -25,6 +25,7 @@ import {DialogChargeComponent } from './dialog-charge/dialog-charge.component';
 import {ChargeComponent } from './charge/charge.component';
 import {FactureComponent } from './facture/facture.component';
 import {StockComponent } from './stock/stock.component';
+import { DialogFactureComponent } from './dialog-facture/dialog-facture.component';
 
 @NgModule({
   
@@ -36,7 +37,8 @@ import {StockComponent } from './stock/stock.component';
     ChargeComponent,
     FactureComponent,
     DialogChargeComponent,
-    StockComponent
+    StockComponent,
+    DialogFactureComponent
   ],
   imports: [
     BrowserModule,
