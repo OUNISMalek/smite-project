@@ -8,6 +8,8 @@ import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { DialogFactureComponent } from '../dialog-facture/dialog-facture.component';
 import { ServfactureService } from '../services/servfacture.service';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 (<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 @Component({
@@ -100,7 +102,15 @@ export class FactureComponent implements OnInit {
     }
   }
   generatePdf() {
-    const documentDefinition = { content: 'This is for testing.' };
-    pdfMake.createPdf(documentDefinition).open();
+    let DATA: any = document.getElementById('pdf-export');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.save('angular-demo.pdf');
+    });
   }
 }
