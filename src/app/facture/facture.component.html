@@ -1,20 +1,20 @@
 <div class="container">
-    <img width="200" alt="SmiteServ" src="../assets/Sans_titre-removebg-preview.png" />
+    <img width="180" alt="SmiteServ" src="../assets/Sans_titre-removebg-preview.png" />
     <div [align]="'end'">
     </div>
     <div id="pdf-export">
-        <p>
+       <!-- <p>
             Adresse : Immeuble CNRPS Tataouine nord 3263 Tataouine <br />
             Email : Smite.service@gmail.com<br />
             Tel/ Fax : 00216 75 870 889<br />
             GSM : 00216 95 225 630<br />
             UI : 1599585/S <br />
             RIB : BH-Bank – 14208208101700429341<br />
-        </p>
+        </p>-->
         <div style="margin-top: 10px;">
             <mat-form-field appearance="standard">
                 <mat-label>Filter</mat-label>
-                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Filtre" #input>
             </mat-form-field>
             <button style="margin-bottom: 12px;" mat-stroked-button (click)="openDialog()">Add Facture</button>
             <div class="mat-elevation-z8">

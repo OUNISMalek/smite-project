@@ -1,4 +1,4 @@
-<h1>Charge Form </h1>
+<h1>Facture d'achat Form </h1>
 <div mat-dialog-content>
 <form [formGroup]="ChargeForm">    
 
@@ -11,20 +11,30 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline">
+        <mat-label>Désignation</mat-label>
+        <input formControlName="designation" matInput placeholder="Désignation">      
+    </mat-form-field>
+    <br/>
+    <mat-form-field appearance="outline">
+        <mat-label>Fournisseur</mat-label>
+        <input formControlName="fournisseur" matInput placeholder="Fournisseur">
+    </mat-form-field>
+    <br/>   
+    <mat-form-field appearance="outline">
         <mat-label>Montant</mat-label>
-        <input formControlName="montant" matInput placeholder="Montant">      
+        <input formControlName="montant" matInput placeholder="Montant">
     </mat-form-field>&nbsp;
 
     <mat-form-field appearance="outline">
-        <mat-label>Charge</mat-label>
-        <input formControlName="charge" matInput placeholder="Charge">
+        <mat-label>Mode de paiement</mat-label>
+        <input formControlName="modepaiement" matInput placeholder="Mode de paiement">
     </mat-form-field>
-
+    <br/>
 <div mat-dialog-action [align]="'end'">
     <button mat-raised-button mat-dialog-close>Close</button>
     <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addCharge()">{{actionBtn}}</button>
 
-</div> 
+</div> &nbsp;
 
 </form>
 </div>

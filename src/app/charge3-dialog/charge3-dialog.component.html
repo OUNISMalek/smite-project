@@ -1,0 +1,22 @@
+<h1>Personnels Form </h1>
+<div mat-dialog-content>
+<form [formGroup]="ChargeForm">    
+
+    <mat-form-field appearance="outline">
+        <mat-label>Salarié</mat-label>
+        <input formControlName="salarie" matInput placeholder="Salarié">
+    </mat-form-field>
+    <br/>   
+    <mat-form-field appearance="outline">
+        <mat-label>Montant</mat-label>
+        <input formControlName="montant" matInput placeholder="Montant">
+    </mat-form-field>&nbsp;
+
+<div mat-dialog-action [align]="'end'">
+    <button mat-raised-button mat-dialog-close>Close</button>
+    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addCharge()">{{actionBtn}}</button>
+
+</div> &nbsp;
+
+</form>
+</div>

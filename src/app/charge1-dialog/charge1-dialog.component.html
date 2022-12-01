@@ -1,4 +1,4 @@
-<h1>Charge Form </h1>
+<h1>Cotisation sociale Form </h1>
 <div mat-dialog-content>
 <form [formGroup]="ChargeForm">    
 
@@ -13,13 +13,18 @@
     <mat-form-field appearance="outline">
         <mat-label>Montant</mat-label>
         <input formControlName="montant" matInput placeholder="Montant">      
-    </mat-form-field>&nbsp;
-
-    <mat-form-field appearance="outline">
-        <mat-label>Charge</mat-label>
-        <input formControlName="charge" matInput placeholder="Charge">
     </mat-form-field>
-
+    <br/>
+    <mat-form-field appearance="outline">
+        <mat-label>Trimestre</mat-label>
+        <input formControlName="trimestre" matInput placeholder="Trimestre">
+    </mat-form-field>
+    <br/>   
+    <mat-form-field appearance="outline">
+        <mat-label>Etat de cotisation</mat-label>
+        <input formControlName="etatcotisation" matInput placeholder="Etat de cotisation">
+    </mat-form-field>
+    <br/>
 <div mat-dialog-action [align]="'end'">
     <button mat-raised-button mat-dialog-close>Close</button>
     <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addCharge()">{{actionBtn}}</button>

@@ -93,19 +93,29 @@
       "montant": "120.000",
       "charge": "Ghoula",
       "id": 2
+    },
+    {
+      "date": "2022-11-27T23:00:00.000Z",
+      "montant": "5000",
+      "charge": "mmm",
+      "id": 3
+    },
+    {
+      "date": "2022-11-29T23:00:00.000Z",
+      "montant": "200",
+      "trimestre": "JUN-AUG",
+      "etatcotisation": "Cotisation",
+      "id": 4
+    },
+    {
+      "date": "2022-11-29T23:00:00.000Z",
+      "montant": "200",
+      "trimestre": "jun-aug",
+      "etatcotisation": "cotisation",
+      "id": 5
     }
   ],
   "Facture": [
-    {
-      "code": "100",
-      "service": "Forage",
-      "quantite": "10",
-      "prix_uni_ht": "10",
-      "prix_ht": "100",
-      "tva": "20",
-      "total": "120",
-      "id": 1
-    },
     {
       "code": "5666",
       "service": "zfzfsdvzgf",
@@ -135,6 +145,55 @@
       "tva": "rsthrt",
       "total": "brgerz",
       "id": 4
+    }
+  ],
+  "Cotisation": [
+    {
+      "date": "2022-11-29T23:00:00.000Z",
+      "montant": "200",
+      "trimestre": "jun-Aug",
+      "etatcotisation": "cotisation",
+      "id": 2
+    },
+    {
+      "date": "2022-11-29T23:00:00.000Z",
+      "montant": "cotisation",
+      "trimestre": "Janv-Mars",
+      "etatcotisation": "cot",
+      "id": 3
+    }
+  ],
+  "Achat": [
+    {
+      "date": "2022-11-29T23:00:00.000Z",
+      "designation": "trs",
+      "fournisseur": "smite",
+      "montant": "120",
+      "modepaiement": "chéque",
+      "id": 2
+    },
+    {
+      "date": "2022-11-29T23:00:00.000Z",
+      "designation": "1223",
+      "fournisseur": "hjklk",
+      "montant": "1235",
+      "modepaiement": "hjj",
+      "id": 3
+    }
+  ],
+  "Personnel": [
+    {
+      "salarie": "saaed",
+      "montant": "1000",
+      "id": 1
+    }
+  ],
+  "Impots": [
+    {
+      "date": "2022-11-29T23:00:00.000Z",
+      "depenses": "200.000",
+      "montant": "200",
+      "id": 1
     }
   ]
 }

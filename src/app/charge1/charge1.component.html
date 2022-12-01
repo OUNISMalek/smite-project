@@ -4,10 +4,10 @@
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Filtre" #input>
     </mat-form-field>
-    <button style="margin-bottom: 12px;" mat-stroked-button (click)="openDialog()">Add charge</button>
+    <button style="margin-bottom: 12px;" mat-stroked-button (click)="openDialog()">Add</button>
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" matSort>
-    
+        
         <!-- date Column -->
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
@@ -20,11 +20,17 @@
           <td mat-cell *matCellDef="let row"> {{row.montant}} </td>
         </ng-container>
     
-        <!-- charge Column -->
-        <ng-container matColumnDef="charge">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Charge </th>
-          <td mat-cell *matCellDef="let row"> {{row.charge}} </td>
+        <!-- trimestre Column -->
+        <ng-container matColumnDef="trimestre">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Trimestre </th>
+          <td mat-cell *matCellDef="let row"> {{row.trimestre}} </td>
         </ng-container>
+
+            <!-- Etat de cotisation Column -->
+            <ng-container matColumnDef="etatcotisation">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Etat de cotisation </th>
+                <td mat-cell *matCellDef="let row"> {{row.etatcotisation}} </td>
+              </ng-container>
   
         <!-- action Column -->
         <ng-container matColumnDef="action">
