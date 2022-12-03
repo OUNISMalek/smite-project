@@ -117,16 +117,6 @@
   ],
   "Facture": [
     {
-      "code": "5666",
-      "service": "zfzfsdvzgf",
-      "quantite": "266",
-      "prix_uni_ht": "220",
-      "prix_ht": "5226",
-      "tva": "5263",
-      "total": "4564245",
-      "id": 2
-    },
-    {
       "code": "500",
       "service": "dkzfvjkamlj",
       "quantite": "522",

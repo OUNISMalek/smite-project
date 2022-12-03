@@ -1,17 +1,15 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import * as pdfMake from 'pdfmake/build/pdfmake';
-import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { DialogFactureComponent } from '../dialog-facture/dialog-facture.component';
 import { ServfactureService } from '../services/servfacture.service';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import jsPDF, { jsPDFOptions } from 'jspdf';
+import domToImage from 'dom-to-image';
+import * as moment from 'moment';
 
-(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-facture',
   templateUrl: './facture.component.html',
@@ -32,6 +30,10 @@ export class FactureComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild('dataToExport', { static: false })
+  public dataToExport!: ElementRef;
+  pdfName: string = "facture";
+  
   constructor(
     private router: Router,
     private dialog: MatDialog,
@@ -45,7 +47,7 @@ export class FactureComponent implements OnInit {
   openDialog() {
     this.dialog
       .open(DialogFactureComponent, {
-        width: '50%',
+        width: '110%',
       })
       .afterClosed()
       .subscribe((val) => {
@@ -71,7 +73,7 @@ export class FactureComponent implements OnInit {
   editFacture(row: any) {
     this.dialog
       .open(DialogFactureComponent, {
-        width: '30%',
+        width: '110%',
         data: row,
       })
       .afterClosed()
@@ -85,7 +87,6 @@ export class FactureComponent implements OnInit {
   deleteFacture(id: number) {
     this.servfacture.deleteLigneFacture(id).subscribe({
       next: (res) => {
-        alert('OrderLine deleted successfully');
         this.getAllFactures();
       },
       error: () => {
@@ -94,23 +95,27 @@ export class FactureComponent implements OnInit {
     });
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+  // applyFilter(event: Event) {
+  //   const filterValue = (event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+  //   if (this.dataSource.paginator) {
+  //     this.dataSource.paginator.firstPage();
+  //   }
+  // }
+  generatePdf() {
+    const width:number = this.dataToExport.nativeElement.clientWidth;
+    const height:number = this.dataToExport.nativeElement.clientHeight + 40;
+    let orientation: 'l'|'p';
+    if (width > height) {orientation = 'l';} else {orientation = 'p';}
+    domToImage.toPng(this.dataToExport.nativeElement, {width: width,height: height})
+        .then(result => 
+          {let jsPdfOptions:jsPDFOptions = {orientation: orientation,unit: 'pt',format: [width + 50, height + 220]};
+      const pdf = new jsPDF(jsPdfOptions);
+      pdf.setFontSize(48);
+      pdf.setTextColor('#2585fe');
+      pdf.text(this.pdfName, 25, 75);
+      pdf.setFontSize(24);pdf.setTextColor('#131523');
+      pdf.text('Report date: ' + moment().format('ll'), 25, 115);pdf.addImage(result, 'PNG', 25, 185, width, height);
+      pdf.save('file_name'+ '.pdf');}).catch(error => {});
     }
   }
-  generatePdf() {
-    let DATA: any = document.getElementById('pdf-export');
-    html2canvas(DATA).then((canvas) => {
-      let fileWidth = 208;
-      let fileHeight = (canvas.height * fileWidth) / canvas.width;
-      const FILEURI = canvas.toDataURL('image/png');
-      let PDF = new jsPDF('p', 'mm', 'a4');
-      let position = 0;
-      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-      PDF.save('angular-demo.pdf');
-    });
-  }
-}
