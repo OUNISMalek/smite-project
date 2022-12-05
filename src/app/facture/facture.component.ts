@@ -9,6 +9,7 @@ import { ServfactureService } from '../services/servfacture.service';
 import jsPDF, { jsPDFOptions } from 'jspdf';
 import domToImage from 'dom-to-image';
 import * as moment from 'moment';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-facture',
@@ -30,15 +31,15 @@ export class FactureComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild('dataToExport', { static: false })
-  public dataToExport!: ElementRef;
-  pdfName: string = "facture";
-  
+  @ViewChild('pdfexport', { static: false })
+  public pdfExport!: ElementRef;
+  pdfName: string = "Facture";
+
   constructor(
     private router: Router,
     private dialog: MatDialog,
     private servfacture: ServfactureService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getAllFactures();
@@ -103,19 +104,32 @@ export class FactureComponent implements OnInit {
   //   }
   // }
   generatePdf() {
-    const width:number = this.dataToExport.nativeElement.clientWidth;
-    const height:number = this.dataToExport.nativeElement.clientHeight + 40;
-    let orientation: 'l'|'p';
-    if (width > height) {orientation = 'l';} else {orientation = 'p';}
-    domToImage.toPng(this.dataToExport.nativeElement, {width: width,height: height})
-        .then(result => 
-          {let jsPdfOptions:jsPDFOptions = {orientation: orientation,unit: 'pt',format: [width + 50, height + 220]};
-      const pdf = new jsPDF(jsPdfOptions);
-      pdf.setFontSize(48);
-      pdf.setTextColor('#2585fe');
-      pdf.text(this.pdfName, 25, 75);
-      pdf.setFontSize(24);pdf.setTextColor('#131523');
-      pdf.text('Report date: ' + moment().format('ll'), 25, 115);pdf.addImage(result, 'PNG', 25, 185, width, height);
-      pdf.save('file_name'+ '.pdf');}).catch(error => {});
-    }
+    // // jsPdf implementation
+    // const width:number = this.pdfExport.nativeElement.clientWidth;
+    // const height:number = this.pdfExport.nativeElement.clientHeight + 40;
+    // let orientation: 'l'|'p';
+    // if (width > height) {orientation = 'l';} else {orientation = 'p';}
+    // domToImage.toPng(this.pdfExport.nativeElement, {width: width,height: height})
+    //     .then(result => 
+    //       {let jsPdfOptions:jsPDFOptions = {orientation: orientation,unit: 'pt',format: [width + 50, height + 220]};
+    //   const pdf = new jsPDF(jsPdfOptions);
+    //   pdf.setFontSize(48);
+    //   pdf.setTextColor('#2585fe');
+    //   pdf.text(this.pdfName, 25, 75);
+    //   pdf.setFontSize(24);pdf.setTextColor('#131523');
+    //   pdf.text('Date Facture: ' + moment().format('ll'), 25, 115);
+    //   pdf.addImage(result, 'PNG', 25, 185, width, height);
+    //   pdf.save('file_name'+ '.pdf');}).catch(error => {});
+
+    html2canvas(this.pdfExport.nativeElement, { scale: 3 }).then((canvas) => {
+      const imageGeneratedFromTemplate = canvas.toDataURL('image/png');
+      const fileWidth = 200;
+      const generatedImageHeight = (canvas.height * fileWidth) / canvas.width;
+      let PDF = new jsPDF('p', 'mm', 'a4',);
+      PDF.addImage(imageGeneratedFromTemplate, 'PNG', 0, 5, fileWidth, generatedImageHeight,);
+      PDF.html(this.pdfExport.nativeElement.innerHTML)
+      PDF.save('angular-invoice-pdf-demo.pdf');
+    });
   }
+}
+

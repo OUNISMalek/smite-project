@@ -1,19 +1,35 @@
-<div class="container">
-    <img width="180" alt="SmiteServ" src="../assets/Sans_titre-removebg-preview.png" />
-    <div [align]="'end'">
+<div class="container" #pdfexport>
+    <div class="title-logo">
+        <img width="200" alt="SmiteServ" src="../assets/Sans_titre-removebg-preview.png" />
     </div>
-    <div #dataToExport>
-       <!-- <p>
-            Adresse : Immeuble CNRPS Tataouine nord 3263 Tataouine <br />
-            Email : Smite.service@gmail.com<br />
-            Tel/ Fax : 00216 75 870 889<br />
-            GSM : 00216 95 225 630<br />
-            UI : 1599585/S <br />
-            RIB : BH-Bank – 14208208101700429341<br />
-        </p>-->
+    <mat-card class="info-card">
+        <mat-card-header>
+            <mat-card-title>SMITE Services</mat-card-title>
+            <mat-card-subtitle>Facture</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content class="entete">
+
+            <mat-card>
+                Adresse: Immeuble CNRPS Tataouine Nord 3263 Tataouine
+                UI: 1599585/S
+                RIB: BH-Bank 14208208101700429341
+            </mat-card>
+
+            <mat-card>
+                Email: Smite.service@gmail.com
+                Tel/ Fax: 00216 75 870 889
+                GSM: 00216 95 225 630
+            </mat-card>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button>PRINT</button>
+        </mat-card-actions>
+    </mat-card>
+    <div>
         <div style="margin-top: 10px;">
-            <button style="margin-bottom: 12px;" mat-stroked-button
-                (click)="openDialog()">Ajouter ligne de Facture</button>
+            <button style="margin-bottom: 12px;" mat-stroked-button (click)="openDialog()">Ajouter ligne de
+                Facture</button>
             <div class="mat-elevation-z8">
                 <table mat-table [dataSource]="dataSource" matSort>
 
@@ -78,11 +94,10 @@
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-        
+
                 </table>
 
-                <mat-paginator [pageSizeOptions]="[10, 25, 100]"
-                    aria-label="Select page of users"></mat-paginator>
+                <mat-paginator [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
             </div>
         </div>
     </div>
