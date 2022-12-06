@@ -34,21 +34,21 @@
             <mat-card-title>Titre :</mat-card-title>
             <mat-form-field>
                 <mat-label>titre facture</mat-label>
-                <input matInput>
+                <input matInput [(ngModel)] = "titre_facture">
             </mat-form-field>
         </mat-card>
         <mat-card>
             <mat-card-title>Facture N° :</mat-card-title>
             <mat-form-field>
                 <mat-label>N° facture</mat-label>
-                <input matInput>
+                <input matInput [(ngModel)] = "num_facture">
             </mat-form-field>
         </mat-card>
         <mat-card>
             <mat-card-title>DOIT :</mat-card-title>
             <mat-form-field>
                 <mat-label>entité concerné</mat-label>
-                <input matInput>
+                <input matInput [(ngModel)] = "benef_facture">
             </mat-form-field>
         </mat-card>
     </div>
@@ -127,20 +127,34 @@
         <mat-paginator data-html2canvas-ignore [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users">
         </mat-paginator>
     </div>
-    <table mat-table class="total-table" [dataSource]="tableTotale">
-        <ng-container matColumnDef="taxes">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> TVA (19 %)</th>
-            <td mat-cell *matCellDef="let row"> {{row.taxes}} </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="totalColumns"></tr>
-        <tr mat-row *matRowDef="let row;columns: totalColumns"></tr>
-    </table>
+  
+    <mat-card class="sommes-totales">
+        <mat-card-title> Total HT: </mat-card-title>
+        <mat-form-field>
+            <mat-label>Total HT</mat-label>
+            <input matInput [(ngModel)] = "total_ht">
+            <mat-error>nombres uniquement!</mat-error>
+        </mat-form-field>
+        <mat-card-title> Taxes: </mat-card-title>
+        <mat-form-field>
+            <mat-label>Taxes: (TVA,RG,RS...)</mat-label>
+            <input matInput [(ngModel)] = "taxes">
+            <mat-error>nombres uniquement!</mat-error>
+        </mat-form-field>
+        <mat-card-title> Total TTC: </mat-card-title>
+        <mat-form-field>
+            <mat-label>Total TTC</mat-label>
+            <input matInput [(ngModel)] = "total_ttc">
+            <mat-error>nombres uniquement!</mat-error>
+        </mat-form-field>
+    </mat-card>
 
     <mat-card>
         <mat-card-title>Arrêtée la présente facture à la somme de (TTC): </mat-card-title>
         <mat-form-field>
             <mat-label>somme totale</mat-label>
-            <input matInput>
+            <input type="text" matInput [(ngModel)] = "total_lettre">
+            <mat-error>lettres uniquement!</mat-error>
         </mat-form-field>
     </mat-card>
 

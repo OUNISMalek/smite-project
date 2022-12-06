@@ -1,7 +1,7 @@
-table {
-  width: 95%;
-  margin: auto;
-}
+// table {
+//   width: 100%;
+//   margin: 0 auto;
+// }
 
 .mat-form-field {
   font-size: 14px;
@@ -32,8 +32,8 @@ table {
 }
 
 .table-facture {
-  padding: 10px auto;
-  margin: auto 100px;
+  width: 95%;
+  margin: auto;
   th{
     font-weight: bold;
     font-style: oblique;
@@ -63,4 +63,12 @@ table {
 .print-button {
   display: flex;
   justify-content: flex-end;
+}
+
+.sommes-totales{
+  width: 32%;
+  margin-left: 50%;
+  display: flex;
+  flex-direction: column;
+  
 }

@@ -18,23 +18,21 @@ import html2canvas from 'html2canvas';
 })
 export class FactureComponent implements OnInit {
   title = 'gestionstock';
-  displayedColumns: string[] = [
-    'code',
-    'service',
-    'quantite',
-    'prix_uni_ht',
-    'prix_ht',
-    'tva',
-    'total',
-    'action',
-  ];
+
   dataSource!: MatTableDataSource<any>;
+  displayedColumns: string[] = ['code', 'service', 'quantite', 'prix_uni_ht', 'prix_ht', 'tva', 'total', 'action'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
   @ViewChild('pdfexport', { static: false }) public pdfExport!: ElementRef;
   pdfName: string = "Facture";
-  tableTotale!: MatTableDataSource<any>;
-  totalColumns: string[] = ['total_ht','taxes','total_ttc'];
+  total_lettre!: string;
+  total_ttc!: number;
+  taxes!: number;
+  total_ht!: number;
+  benef_facture!: string;
+  num_facture!: number;
+  titre_facture!: string;
 
   constructor(
     private router: Router,
@@ -128,7 +126,7 @@ export class FactureComponent implements OnInit {
       let PDF = new jsPDF('p', 'mm', 'a4',);
       PDF.addImage(imageGeneratedFromTemplate, 'PNG', 0, 5, fileWidth, generatedImageHeight,);
       PDF.html(this.pdfExport.nativeElement.innerHTML)
-      PDF.save('angular-invoice-pdf-demo.pdf');
+      PDF.save(`${this.benef_facture||this.pdfName}.pdf`);
     });
   }
 }
