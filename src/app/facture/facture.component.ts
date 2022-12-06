@@ -31,9 +31,10 @@ export class FactureComponent implements OnInit {
   dataSource!: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild('pdfexport', { static: false })
-  public pdfExport!: ElementRef;
+  @ViewChild('pdfexport', { static: false }) public pdfExport!: ElementRef;
   pdfName: string = "Facture";
+  tableTotale!: MatTableDataSource<any>;
+  totalColumns: string[] = ['total_ht','taxes','total_ttc'];
 
   constructor(
     private router: Router,
@@ -52,9 +53,8 @@ export class FactureComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((val) => {
-        if (val === 'save') {
+        if (val == 'saved')
           this.getAllFactures();
-        }
       });
   }
 
@@ -79,7 +79,7 @@ export class FactureComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((val) => {
-        if (val === 'update') {
+        if (val === 'updated') {
           this.getAllFactures();
         }
       });
@@ -87,7 +87,7 @@ export class FactureComponent implements OnInit {
 
   deleteFacture(id: number) {
     this.servfacture.deleteLigneFacture(id).subscribe({
-      next: (res) => {
+      next: () => {
         this.getAllFactures();
       },
       error: () => {
