@@ -34,21 +34,21 @@
             <mat-card-title>Titre :</mat-card-title>
             <mat-form-field>
                 <mat-label>titre facture</mat-label>
-                <input matInput [(ngModel)] = "titre_facture">
+                <input matInput [(ngModel)] = "factureMetadata.titre_facture">
             </mat-form-field>
         </mat-card>
         <mat-card>
             <mat-card-title>Facture N° :</mat-card-title>
             <mat-form-field>
                 <mat-label>N° facture</mat-label>
-                <input matInput [(ngModel)] = "num_facture">
+                <input matInput [(ngModel)] = "factureMetadata.num_facture">
             </mat-form-field>
         </mat-card>
         <mat-card>
             <mat-card-title>DOIT :</mat-card-title>
             <mat-form-field>
                 <mat-label>entité concerné</mat-label>
-                <input matInput [(ngModel)] = "benef_facture">
+                <input matInput [(ngModel)] = "factureMetadata.benef_facture">
             </mat-form-field>
         </mat-card>
     </div>
@@ -132,19 +132,19 @@
         <mat-card-title> Total HT: </mat-card-title>
         <mat-form-field>
             <mat-label>Total HT</mat-label>
-            <input matInput [(ngModel)] = "total_ht">
+            <input matInput [(ngModel)] = "factureMetadata.total_ht">
             <mat-error>nombres uniquement!</mat-error>
         </mat-form-field>
         <mat-card-title> Taxes: </mat-card-title>
         <mat-form-field>
             <mat-label>Taxes: (TVA,RG,RS...)</mat-label>
-            <input matInput [(ngModel)] = "taxes">
+            <input matInput [(ngModel)] = "factureMetadata.taxes">
             <mat-error>nombres uniquement!</mat-error>
         </mat-form-field>
         <mat-card-title> Total TTC: </mat-card-title>
         <mat-form-field>
             <mat-label>Total TTC</mat-label>
-            <input matInput [(ngModel)] = "total_ttc">
+            <input matInput [(ngModel)] = "factureMetadata.total_ttc">
             <mat-error>nombres uniquement!</mat-error>
         </mat-form-field>
     </mat-card>
@@ -153,7 +153,7 @@
         <mat-card-title>Arrêtée la présente facture à la somme de (TTC): </mat-card-title>
         <mat-form-field>
             <mat-label>somme totale</mat-label>
-            <input type="text" matInput [(ngModel)] = "total_lettre">
+            <input type="text" matInput [(ngModel)] = "factureMetadata.total_lettre">
             <mat-error>lettres uniquement!</mat-error>
         </mat-form-field>
     </mat-card>

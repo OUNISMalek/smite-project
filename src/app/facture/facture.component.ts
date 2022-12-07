@@ -6,10 +6,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { DialogFactureComponent } from '../dialog-facture/dialog-facture.component';
 import { ServfactureService } from '../services/servfacture.service';
-import jsPDF, { jsPDFOptions } from 'jspdf';
-import domToImage from 'dom-to-image';
-import * as moment from 'moment';
+import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { FactureMetadata } from '../models/facture_metadata';
 
 @Component({
   selector: 'app-facture',
@@ -26,13 +25,15 @@ export class FactureComponent implements OnInit {
 
   @ViewChild('pdfexport', { static: false }) public pdfExport!: ElementRef;
   pdfName: string = "Facture";
-  total_lettre!: string;
-  total_ttc!: number;
-  taxes!: number;
-  total_ht!: number;
-  benef_facture!: string;
-  num_facture!: number;
-  titre_facture!: string;
+  factureMetadata: FactureMetadata = {
+    total_lettre: '',
+    total_ttc: 0,
+    taxes: 0,
+    total_ht: 0,
+    benef_facture: '',
+    num_facture: '',
+    titre_facture: '',
+  };
 
   constructor(
     private router: Router,
@@ -126,7 +127,9 @@ export class FactureComponent implements OnInit {
       let PDF = new jsPDF('p', 'mm', 'a4',);
       PDF.addImage(imageGeneratedFromTemplate, 'PNG', 0, 5, fileWidth, generatedImageHeight,);
       PDF.html(this.pdfExport.nativeElement.innerHTML)
-      PDF.save(`${this.benef_facture||this.pdfName}.pdf`);
+      console.log(this.factureMetadata.titre_facture);
+      console.log(this.factureMetadata.total_lettre);
+      PDF.save(`${this.factureMetadata.benef_facture || this.pdfName}.pdf`);
     });
   }
 }
