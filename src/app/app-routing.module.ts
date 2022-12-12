@@ -11,10 +11,11 @@ import { Charge1Component } from './charge1/charge1.component';
 import { Charge2Component } from './charge2/charge2.component';
 import { Charge3Component } from './charge3/charge3.component';
 import { Charge4Component } from './charge4/charge4.component';
+import { FactureLoaderComponent } from './facture/facture.loader.component';
 const routes: Routes = [
  { path: 'stock', component: StockComponent },
  { path: 'charge', component: ChargeComponent },
- { path: 'facture', component: FactureComponent},
+ { path: 'facture', component: FactureLoaderComponent},
  { path: 'dashboard', component: DashboardComponent},
  { path: 'charge1', component: Charge1Component},
  { path: 'charge2', component: Charge2Component},
