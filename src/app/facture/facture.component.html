@@ -1,4 +1,4 @@
-<div class="container" #pdfexport>
+<div class="container">
     <div class="facture-number" [formGroup]="factureForm">
         <div formGroupName="factureMetadata">
             <mat-card>
@@ -137,6 +137,6 @@
     </div>
     <mat-card-actions data-html2canvas-ignore class="print-button">
         <button class="mat-elevation-z2" (click)="generatePdf()" mat-raised-button color="primary">Imprimer</button>
+        <button class="mat-elevation-z2" (click)="onSubmit()" mat-raised-button color="primary">Sauvegarder</button>
     </mat-card-actions>
 </div>
-<button (click)="onSubmit()">Payload</button>

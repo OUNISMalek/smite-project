@@ -30,16 +30,20 @@
         </mat-card-content>
 
     </mat-card>
-    <mat-card *ngIf="!factureLoaded">
+    <mat-card class="dashboard">
         <mat-card>
             <button (click)="newFacture()" class="mat-elevation-z2" mat-stroked-button color="primary">Ajouter Nouvelle
                 Facture</button>
         </mat-card>
         <mat-card>
             <input type="text" matInput #box>
-            <button (click)="loadFactureByNumber(box.value)" class="mat-elevation-z2" mat-raised-button>Charger
+            <button (click)="loadFactureByNumber(box.value)" class="mat-elevation-z2" mat-stroked-button color="warn">Charger
                 Facture</button>
         </mat-card>
     </mat-card>
-    <app-facture *ngIf="factureLoaded" [factureForm]="factureForm"></app-facture>
+    <ng-container>
+        <ng-container *ngIf="facture$ | async as facture">
+            <app-facture (uploadedFacture)="saveFacture($event)" [facture]="facture"></app-facture>
+        </ng-container>
+    </ng-container>
 </div>

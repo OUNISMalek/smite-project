@@ -9,7 +9,7 @@ export class ServfactureService {
   constructor(private http: HttpClient) { }
 
 
-  postFacture(data: any) {
+  saveFacture(data: any) {
     return this.http.post<any>("http://localhost:3000/Facture/", data);
   }
   getFacture(id: number) {

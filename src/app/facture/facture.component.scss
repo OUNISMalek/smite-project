@@ -24,6 +24,10 @@
   padding: auto;
   margin: auto;
 }
+.dashboard{
+  display: flex;
+  justify-content: space-between;
+}
 
 .facture-number {
   display: flex;
