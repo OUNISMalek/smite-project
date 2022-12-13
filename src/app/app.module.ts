@@ -34,6 +34,8 @@ import { Charge1DialogComponent } from './charge1-dialog/charge1-dialog.componen
 import { Charge2DialogComponent } from './charge2-dialog/charge2-dialog.component';
 import { Charge3DialogComponent } from './charge3-dialog/charge3-dialog.component';
 import { Charge4DialogComponent } from './charge4-dialog/charge4-dialog.component';
+import {MatCardModule} from '@angular/material/card';
+import { FactureLoaderComponent } from './facture/facture.loader.component';
 
 @NgModule({
   
@@ -44,6 +46,7 @@ import { Charge4DialogComponent } from './charge4-dialog/charge4-dialog.componen
     DashboardComponent,
     ChargeComponent,
     FactureComponent,
+    FactureLoaderComponent,
     DialogChargeComponent,
     StockComponent,
     DialogFactureComponent,
@@ -54,7 +57,8 @@ import { Charge4DialogComponent } from './charge4-dialog/charge4-dialog.componen
     Charge1DialogComponent,
     Charge2DialogComponent,
     Charge3DialogComponent,
-    Charge4DialogComponent
+    Charge4DialogComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -76,6 +80,7 @@ import { Charge4DialogComponent } from './charge4-dialog/charge4-dialog.componen
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

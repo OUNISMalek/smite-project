@@ -117,34 +117,68 @@
   ],
   "Facture": [
     {
-      "code": "5666",
-      "service": "zfzfsdvzgf",
-      "quantite": "266",
-      "prix_uni_ht": "220",
-      "prix_ht": "5226",
-      "tva": "5263",
-      "total": "4564245",
+      "ligneFactures": [
+        {
+          "code": "500",
+          "service": "dkzfvjkamlj",
+          "quantite": "522",
+          "prix_uni_ht": "552",
+          "prix_ht": "1000",
+          "tva": "2255",
+          "total": "2222"
+        },
+        {
+          "code": "501",
+          "service": "dkzfvjkamlj",
+          "quantite": "522",
+          "prix_uni_ht": "552",
+          "prix_ht": "1000",
+          "tva": "2255",
+          "total": "55"
+        },
+        {
+          "code": "502",
+          "service": "dkzfvjkamlj",
+          "quantite": "522",
+          "prix_uni_ht": "552",
+          "prix_ht": "1000",
+          "tva": "2255",
+          "total": "2000"
+        }
+      ],
+      "factureMetadata": {
+        "total_lettre": "mille cinq cent DT",
+        "total_ttc": "150",
+        "taxes": "500",
+        "total_ht": "1500",
+        "benef_facture": "La Poste Tunisienne",
+        "num_facture": "22NOV2022",
+        "titre_facture": "travaux generales"
+      },
+      "id": 1
+    },
+    {
+      "ligneFactures": [
+        {
+          "code": "k20",
+          "service": "kmmù;,nnnjh",
+          "quantite": "100",
+          "prix_uni_ht": "100",
+          "prix_ht": "9000",
+          "tva": "9",
+          "total": "99900"
+        }
+      ],
+      "factureMetadata": {
+        "total_lettre": "cent cinquante DT",
+        "total_ttc": "950",
+        "taxes": "00",
+        "total_ht": "00",
+        "benef_facture": "STEG",
+        "num_facture": "02DEC2022",
+        "titre_facture": "Depenses multiples"
+      },
       "id": 2
-    },
-    {
-      "code": "500",
-      "service": "dkzfvjkamlj",
-      "quantite": "522",
-      "prix_uni_ht": "552",
-      "prix_ht": "1000",
-      "tva": "2255",
-      "total": "220255",
-      "id": 3
-    },
-    {
-      "code": "hhszht",
-      "service": "etbstb",
-      "quantite": "brtst",
-      "prix_uni_ht": "rbtsbts",
-      "prix_ht": "rtbrsgt",
-      "tva": "rsthrt",
-      "total": "brgerz",
-      "id": 4
     }
   ],
   "Cotisation": [
