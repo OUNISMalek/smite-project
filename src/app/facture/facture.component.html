@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" #pdfexport>
     <div class="facture-number" [formGroup]="factureForm">
         <div formGroupName="factureMetadata">
             <mat-card>
@@ -8,21 +8,44 @@
                     <input matInput formControlName="titre_facture">
                 </mat-form-field>
             </mat-card>
-            <mat-card>
-                <mat-card-title>Facture N° :</mat-card-title>
-                <mat-form-field>
-                    <mat-label>N° facture</mat-label>
-                    <input matInput formControlName="num_facture">
-                </mat-form-field>
+        <mat-card-content class="entete">
+            <mat-card class="description">
+                <mat-card-title> Adresse: </mat-card-title>
+                <mat-card-subtitle>Immeuble CNRPS Tataouine Nord 3263 Tataouine </mat-card-subtitle>
+                <mat-card-title> UI: </mat-card-title>
+                <mat-card-subtitle>1599585/S </mat-card-subtitle>
+                <mat-card-title> RIB: </mat-card-title>
+                <mat-card-subtitle>BH-Bank 14208208101700429341 </mat-card-subtitle>
             </mat-card>
-            <mat-card>
-                <mat-card-title>DOIT :</mat-card-title>
-                <mat-form-field>
-                    <mat-label>entité concerné</mat-label>
-                    <input matInput formControlName="benef_facture">
-                </mat-form-field>
-            </mat-card>
-        </div>
+        </mat-card-content>
+
+    <div class="facture-number">
+        <mat-card>
+            <mat-card-title>DATE :</mat-card-title>
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input formControlName="date" matInput [matDatepicker]="picker" matInput formControlName="date_facture">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> 
+        </mat-card>
+
+        <mat-card>
+            <mat-card-title>REFERENCE FACTURE :</mat-card-title>
+            <mat-form-field>
+                <mat-label>Référence</mat-label>
+                <input matInput formControlName="num_facture">
+            </mat-form-field>
+        </mat-card>
+
+        <mat-card>
+            <mat-card-title>CLIENT:</mat-card-title>
+            <mat-form-field>
+                <mat-label>Entité concerné</mat-label>
+                <input matInput formControlName="benef_facture">
+            </mat-form-field>
+        </mat-card>
     </div>
     <div [formGroup]="factureForm">
         <div class="add-button" data-html2canvas-ignore>
