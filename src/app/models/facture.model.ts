@@ -18,6 +18,7 @@ export class FactureMetadata {
     taxes: number = 0;
     total_ht: number = 0;
     benef_facture: string = '';
+    date_facturation: string = '';
     num_facture: string = '';
     titre_facture: string = '';
 }
