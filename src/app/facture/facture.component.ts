@@ -1,14 +1,12 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
-import { DialogFactureComponent } from '../dialog-facture/dialog-facture.component';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ServfactureService } from '../services/servfacture.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import { FactureMetadata } from '../models/facture_metadata';
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Facture } from '../models/facture.model';
 
 @Component({
   selector: 'app-facture',
@@ -18,82 +16,87 @@ import { FactureMetadata } from '../models/facture_metadata';
 export class FactureComponent implements OnInit {
   title = 'gestionstock';
 
-  dataSource!: MatTableDataSource<any>;
+  dataSource!: MatTableDataSource<AbstractControl>;
   displayedColumns: string[] = ['code', 'service', 'quantite', 'prix_uni_ht', 'prix_ht', 'tva', 'total', 'action'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   @ViewChild('pdfexport', { static: false }) public pdfExport!: ElementRef;
+  @ViewChild(MatTable) table!: MatTable<any>;
   pdfName: string = "Facture";
-  factureMetadata: FactureMetadata = {
-    total_lettre: '',
-    total_ttc: 0,
-    taxes: 0,
-    total_ht: 0,
-    benef_facture: '',
-    num_facture: '',
-    titre_facture: '',
-  };
+  loadedFacture: Facture = new Facture();
+  @Input() factureForm!: FormGroup;
+  //ligneFactures!: FormArray;
+  payLoad = '';
 
   constructor(
-    private router: Router,
-    private dialog: MatDialog,
-    private servfacture: ServfactureService
+    private fb: FormBuilder,
   ) { }
 
-  ngOnInit(): void {
-    this.getAllFactures();
+  ngOnInit() {
+    console.warn('factureForm from parent : '+ this.factureForm);
+   // this.dataSource = new MatTableDataSource((this.factureForm.get('ligneFactures') as FormArray).controls);
+
+
   }
-  //dialog of adding product
-  openDialog() {
-    this.dialog
-      .open(DialogFactureComponent, {
-        width: '110%',
-      })
-      .afterClosed()
-      .subscribe((val) => {
-        if (val == 'saved')
-          this.getAllFactures();
-      });
+  get ligneFactures() {
+    return this.factureForm.get('ligneFactures') as FormArray;
+  }
+  // get factureMetadata() {
+  //   return this.factureForm.get('factureMetadata') as FormGroup;
+  // }
+  removeLigneFacture(index: number) {
+    this.ligneFactures.removeAt(index);
+    this.table.renderRows();
+  }
+  resetLigneFactures() {
+    this.ligneFactures.reset();
+    this.table.renderRows();
+  }
+  addLigneFacture() {
+    this.ligneFactures.push(this.fb.group({
+      code: [''],
+      service: [''],
+      quantite: [''],
+      prix_uni_ht: [''],
+      prix_ht: [''],
+      tva: [''],
+      total: [''],
+    }));
+    this.table.renderRows();
   }
 
-  getAllFactures() {
-    this.servfacture.getLigneFacture().subscribe({
-      next: (res) => {
-        this.dataSource = new MatTableDataSource(res);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      },
-      error: (err) => {
-        alert('Error while fetching!!');
-      },
-    });
+  onSubmit() {
+    this.payLoad = JSON.stringify(this.factureForm.getRawValue());
+    console.warn(this.payLoad);
   }
 
-  editFacture(row: any) {
-    this.dialog
-      .open(DialogFactureComponent, {
-        width: '110%',
-        data: row,
-      })
-      .afterClosed()
-      .subscribe((val) => {
-        if (val === 'updated') {
-          this.getAllFactures();
-        }
-      });
-  }
 
-  deleteFacture(id: number) {
-    this.servfacture.deleteLigneFacture(id).subscribe({
-      next: () => {
-        this.getAllFactures();
-      },
-      error: () => {
-        alert('Error while deleting orderLine');
-      },
-    });
-  }
+
+  // editFacture(row: any) {
+  //   this.dialog
+  //     .open(DialogFactureComponent, {
+  //       width: '110%',
+  //       data: row,
+  //     })
+  //     .afterClosed()
+  //     .subscribe((val) => {
+  //       if (val === 'updated') {
+  //         this.getFacture();
+  //       }
+  //     });
+  // }
+
+  // deleteFacture(id: number) {
+  //   this.servfacture.deleteFacture(id).subscribe({
+  //     next: () => {
+  //       this.getFacture();
+  //     },
+  //     error: () => {
+  //       alert('Error while deleting orderLine');
+  //     },
+  //   });
+  // }
 
   // applyFilter(event: Event) {
   //   const filterValue = (event.target as HTMLInputElement).value;
@@ -127,9 +130,8 @@ export class FactureComponent implements OnInit {
       let PDF = new jsPDF('p', 'mm', 'a4',);
       PDF.addImage(imageGeneratedFromTemplate, 'PNG', 0, 5, fileWidth, generatedImageHeight,);
       PDF.html(this.pdfExport.nativeElement.innerHTML)
-      console.log(this.factureMetadata.titre_facture);
-      console.log(this.factureMetadata.total_lettre);
-      PDF.save(`${this.factureMetadata.benef_facture || this.pdfName}.pdf`);
+      let metadataForm = this.factureForm.get('factureMetadata') as FormGroup
+      PDF.save(`${metadataForm.controls['benef_facture'].value || this.pdfName}.pdf`);
     });
   }
 }

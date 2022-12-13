@@ -39,34 +39,34 @@ export class DialogFactureComponent implements OnInit {
       this.FactureForm.controls['total'].setValue(this.editData.total);
     }
   }
-  addLigneFacture() {
-    if (!this.editData) {
-      if (this.FactureForm.valid) {
-        this.servfacture.postLigneFacture(this.FactureForm.value).subscribe({
-          next: (res) => {
-            this.FactureForm.reset();
-            this.dialogRef.close('saved');
-          },
-          error: () => {
-            alert('Error while adding orderLine');
-          },
-        });
-      }
-    } else {
-      this.updateFacture();
-    }
-  }
-  updateFacture() {
-    this.servfacture
-      .putLigneFacture(this.FactureForm.value, this.editData.id)
-      .subscribe({
-        next: (res) => {
-          this.FactureForm.reset();
-          this.dialogRef.close('updated');
-        },
-        error: () => {
-          alert('Error while updating !');
-        },
-      });
-  }
+  // addLigneFacture() {
+  //   if (!this.editData) {
+  //     if (this.FactureForm.valid) {
+  //       this.servfacture.postLigneFacture(this.FactureForm.value).subscribe({
+  //         next: (res) => {
+  //           this.FactureForm.reset();
+  //           this.dialogRef.close('saved');
+  //         },
+  //         error: () => {
+  //           alert('Error while adding orderLine');
+  //         },
+  //       });
+  //     }
+  //   } else {
+  //     this.updateFacture();
+  //   }
+  // }
+  // updateFacture() {
+  //   this.servfacture
+  //     .putLigneFacture(this.FactureForm.value, this.editData.id)
+  //     .subscribe({
+  //       next: (res) => {
+  //         this.FactureForm.reset();
+  //         this.dialogRef.close('updated');
+  //       },
+  //       error: () => {
+  //         alert('Error while updating !');
+  //       },
+  //     });
+  // }
 }

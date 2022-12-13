@@ -35,6 +35,7 @@ import { Charge2DialogComponent } from './charge2-dialog/charge2-dialog.componen
 import { Charge3DialogComponent } from './charge3-dialog/charge3-dialog.component';
 import { Charge4DialogComponent } from './charge4-dialog/charge4-dialog.component';
 import {MatCardModule} from '@angular/material/card';
+import { FactureLoaderComponent } from './facture/facture.loader.component';
 
 @NgModule({
   
@@ -45,6 +46,7 @@ import {MatCardModule} from '@angular/material/card';
     DashboardComponent,
     ChargeComponent,
     FactureComponent,
+    FactureLoaderComponent,
     DialogChargeComponent,
     StockComponent,
     DialogFactureComponent,

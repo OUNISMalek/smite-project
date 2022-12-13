@@ -1,23 +1,25 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { Facture } from '../models/facture.model';
 @Injectable({
   providedIn: 'root'
 })
 export class ServfactureService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  postLigneFacture(data : any){
-    return this.http.post<any>("http://localhost:3000/Facture/",data);
+
+  postFacture(data: any) {
+    return this.http.post<any>("http://localhost:3000/Facture/", data);
   }
-  getLigneFacture(){
-    return this.http.get<any>("http://localhost:3000/Facture/");
+  getFacture(id: number) {
+    return this.http.get<Facture>("http://localhost:3000/Facture/" + id);
   }
-  putLigneFacture(data : any , id : number){
-    return this.http.put<any>("http://localhost:3000/Facture/"+id ,data);
+  putFacture(data: any, id: number) {
+    return this.http.put<any>("http://localhost:3000/Facture/" + id, data);
   }
-  deleteLigneFacture(id : number){
-    return this.http.delete<any>("http://localhost:3000/Facture/"+id);
+  deleteFacture(id: number) {
+    return this.http.delete<number>("http://localhost:3000/Facture/" + id);
   }
   // GetCustomer() {
   //   return this.http.get('https://localhost:7118/Customer/GetAll');
@@ -52,6 +54,6 @@ export class ServfactureService {
 
   // GenerateInvoicePDF(invoiceno:any){
   //   return this.http.get('https://localhost:7118/Invoice/generatepdf?InvoiceNo='+invoiceno,{observe:'response',responseType:'blob'});
-    
+
   // }
 }

@@ -57,74 +57,77 @@
             </mat-form-field>
         </mat-card>
     </div>
-    <div>
+    <div [formGroup]="factureForm">
         <div class="add-button" data-html2canvas-ignore>
-            <button class="mat-elevation-z2" mat-stroked-button (click)="openDialog()" color="primary">Ajouter ligne de
+            <button class="mat-elevation-z2" mat-stroked-button (click)="addLigneFacture()" color="primary">Ajouter
+                ligne de
                 Facture
             </button>
         </div>
-        <table mat-table [dataSource]="dataSource" matSort class="table-facture">
-
+        <table mat-table matSort class="table-facture" [dataSource]="dataSource" formArrayName="ligneFactures">
+            <caption>Liste des Services et produits facturés</caption>
+            <!-- Rows definition           ------->
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; let i = index; columns: displayedColumns;"></tr>
+            <!-- Columns definitions       ------->
             <!-- code Column -->
             <ng-container matColumnDef="code">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
-                <td mat-cell *matCellDef="let row"> {{row.code}} </td>
+                <td mat-cell *matCellDef="let row; let index=index;" [formGroupName]="index"> <input matInput
+                        type="text" formControlName="code"> </td>
             </ng-container>
 
             <!-- Description Column -->
             <ng-container matColumnDef="service">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
-                <td mat-cell *matCellDef="let row"> {{row.service}} </td>
+                <td mat-cell *matCellDef="let row; let index=index;" [formGroupName]="index"> <input matInput
+                        type="text" formControlName="service"> </td>
             </ng-container>
 
             <!-- Quantite Column -->
             <ng-container matColumnDef="quantite">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> QTE </th>
-                <td mat-cell *matCellDef="let row"> {{row.quantite}} </td>
+                <td mat-cell *matCellDef="let row; let index=index;" [formGroupName]="index"> <input matInput
+                        type="text" formControlName="quantite"> </td>
             </ng-container>
 
             <!-- Prix Unitaire Column -->
             <ng-container matColumnDef="prix_uni_ht">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Prix uni HTVA </th>
-                <td mat-cell *matCellDef="let row"> {{row.prix_uni_ht}} </td>
+                <td mat-cell *matCellDef="let row; let index=index;" [formGroupName]="index"> <input matInput
+                        type="text" formControlName="prix_uni_ht"> </td>
             </ng-container>
 
             <!-- Prix Total HTVA Column -->
             <ng-container matColumnDef="prix_ht">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Prix Total HTVA </th>
-                <td mat-cell *matCellDef="let row"> {{row.prix_ht}} </td>
+                <td mat-cell *matCellDef="let row; let index=index;" [formGroupName]="index"> <input matInput
+                        type="text" formControlName="prix_ht"> </td>
             </ng-container>
 
             <!-- TVA Column -->
             <ng-container matColumnDef="tva">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> TVA (19 %)</th>
-                <td mat-cell *matCellDef="let row"> {{row.tva}} </td>
+                <td mat-cell *matCellDef="let row; let index=index;" [formGroupName]="index"> <input matInput
+                        type="text" formControlName="tva"> </td>
             </ng-container>
 
             <!-- Total Column -->
             <ng-container matColumnDef="total">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Total TTC </th>
-                <td mat-cell *matCellDef="let row"> {{row.total}} </td>
+                <td mat-cell *matCellDef="let row; let index=index;" [formGroupName]="index"> <input matInput
+                        type="text" formControlName="total"> </td>
             </ng-container>
 
             <!--  Action Column -->
             <ng-container matColumnDef="action">
                 <th data-html2canvas-ignore mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
-                <td data-html2canvas-ignore mat-cell *matCellDef="let row">
-
-                    <button mat-icon-button (click)="editFacture(row)" color="primary">
-                        <mat-icon>edit</mat-icon>
-                    </button>
-
-                    <button mat-icon-button (click)="deleteFacture(row.id)" color="warn">
+                <td data-html2canvas-ignore mat-cell *matCellDef="let row; let index=index;" [formGroupName]="index">
+                    <button mat-icon-button color="warn" (click)="removeLigneFacture(index)">
                         <mat-icon>delete</mat-icon>
                     </button>
-
                 </td>
             </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
 
         </table>
@@ -132,38 +135,41 @@
         <mat-paginator data-html2canvas-ignore [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users">
         </mat-paginator>
     </div>
-  
-    <mat-card class="sommes-totales">
-        <mat-card-title> Total HT: </mat-card-title>
-        <mat-form-field>
-            <mat-label>Total HT</mat-label>
-            <input matInput [(ngModel)] = "factureMetadata.total_ht">
-            <mat-error>nombres uniquement!</mat-error>
-        </mat-form-field>
-        <mat-card-title> Taxes: </mat-card-title>
-        <mat-form-field>
-            <mat-label>Taxes: (TVA,RG,RS...)</mat-label>
-            <input matInput [(ngModel)] = "factureMetadata.taxes">
-            <mat-error>nombres uniquement!</mat-error>
-        </mat-form-field>
-        <mat-card-title> Total TTC: </mat-card-title>
-        <mat-form-field>
-            <mat-label>Total TTC</mat-label>
-            <input matInput [(ngModel)] = "factureMetadata.total_ttc">
-            <mat-error>nombres uniquement!</mat-error>
-        </mat-form-field>
-    </mat-card>
-<br/>
-    <mat-card>
-        <mat-card-title>Arrêtée la présente facture à la somme de (TTC): </mat-card-title>
-        <mat-form-field>
-            <mat-label>somme totale</mat-label>
-            <input type="text" matInput [(ngModel)] = "factureMetadata.total_lettre">
-            <mat-error>lettres uniquement!</mat-error>
-        </mat-form-field>
-    </mat-card>
-<p>Signature</p>
+    <div class="facture-number" [formGroup]="factureForm">
+        <div formGroupName="factureMetadata">
+            <mat-card class="sommes-totales">
+                <mat-card-title> Total HT: </mat-card-title>
+                <mat-form-field>
+                    <mat-label>Total HT</mat-label>
+                    <input matInput formControlName="total_ht">
+                    <mat-error>nombres uniquement!</mat-error>
+                </mat-form-field>
+                <mat-card-title> Taxes: </mat-card-title>
+                <mat-form-field>
+                    <mat-label>Taxes: (TVA,RG,RS...)</mat-label>
+                    <input matInput formControlName="taxes">
+                    <mat-error>nombres uniquement!</mat-error>
+                </mat-form-field>
+                <mat-card-title> Total TTC: </mat-card-title>
+                <mat-form-field>
+                    <mat-label>Total TTC</mat-label>
+                    <input matInput formControlName="total_ttc">
+                    <mat-error>nombres uniquement!</mat-error>
+                </mat-form-field>
+            </mat-card>
+
+            <mat-card>
+                <mat-card-title>Arrêtée la présente facture à la somme de (TTC): </mat-card-title>
+                <mat-form-field>
+                    <mat-label>somme totale</mat-label>
+                    <input type="text" matInput formControlName="total_lettre">
+                    <mat-error>lettres uniquement!</mat-error>
+                </mat-form-field>
+            </mat-card>
+        </div>
+    </div>
     <mat-card-actions data-html2canvas-ignore class="print-button">
         <button class="mat-elevation-z2" (click)="generatePdf()" mat-raised-button color="primary">Imprimer</button>
     </mat-card-actions>
 </div>
+<button (click)="onSubmit()">Payload</button>
