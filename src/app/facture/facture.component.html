@@ -1,23 +1,13 @@
 <div class="container" #pdfexport>
+   
     <div class="title-logo">
-        <img width="280" alt="SmiteServ" src="../assets/Sans_titre-removebg-preview.png" />
+        <img width="200" alt="SmiteServ" src="../assets/Sans_titre-removebg-preview.png" />
     </div>
+
     <mat-card class="info-card">
         <mat-card-header>
             <mat-card-title>SMITE Services</mat-card-title>
             <mat-card-subtitle>Facture</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content class="entete">
-
-            <mat-card class="description">
-                <mat-card-title> Adresse: </mat-card-title>
-                <mat-card-subtitle>Immeuble CNRPS Tataouine Nord 3263 Tataouine </mat-card-subtitle>
-                <mat-card-title> UI: </mat-card-title>
-                <mat-card-subtitle>1599585/S </mat-card-subtitle>
-                <mat-card-title> RIB: </mat-card-title>
-                <mat-card-subtitle>BH-Bank 14208208101700429341 </mat-card-subtitle>
-            </mat-card>
-
             <mat-card class="description">
                 <mat-card-title> Email: </mat-card-title>
                 <mat-card-subtitle> smite.service@gmail.com </mat-card-subtitle>
@@ -26,28 +16,43 @@
                 <mat-card-title> GSM: </mat-card-title>
                 <mat-card-subtitle>00216 95 225 630</mat-card-subtitle>
             </mat-card>
-
+        </mat-card-header>
+        <mat-card-content class="entete">
+            <mat-card class="descript">
+                <mat-card-title> Adresse: </mat-card-title>
+                <mat-card-subtitle>Immeuble CNRPS Tataouine Nord 3263 Tataouine </mat-card-subtitle>
+                <mat-card-title> UI: </mat-card-title>
+                <mat-card-subtitle>1599585/S </mat-card-subtitle>
+                <mat-card-title> RIB: </mat-card-title>
+                <mat-card-subtitle>BH-Bank 14208208101700429341 </mat-card-subtitle>
+            </mat-card>
         </mat-card-content>
     </mat-card>
+
     <div class="facture-number">
         <mat-card>
-            <mat-card-title>Titre :</mat-card-title>
-            <mat-form-field>
-                <mat-label>titre facture</mat-label>
-                <input matInput [(ngModel)] = "factureMetadata.titre_facture">
-            </mat-form-field>
+            <mat-card-title>DATE :</mat-card-title>
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input formControlName="date" matInput [matDatepicker]="picker" matInput [(ngModel)] = "factureMetadata.titre_facture">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> 
         </mat-card>
+
         <mat-card>
-            <mat-card-title>Facture N° :</mat-card-title>
+            <mat-card-title>REFERENCE FACTURE :</mat-card-title>
             <mat-form-field>
-                <mat-label>N° facture</mat-label>
+                <mat-label>Référence</mat-label>
                 <input matInput [(ngModel)] = "factureMetadata.num_facture">
             </mat-form-field>
         </mat-card>
+
         <mat-card>
-            <mat-card-title>DOIT :</mat-card-title>
+            <mat-card-title>CLIENT:</mat-card-title>
             <mat-form-field>
-                <mat-label>entité concerné</mat-label>
+                <mat-label>Entité concerné</mat-label>
                 <input matInput [(ngModel)] = "factureMetadata.benef_facture">
             </mat-form-field>
         </mat-card>
@@ -148,7 +153,7 @@
             <mat-error>nombres uniquement!</mat-error>
         </mat-form-field>
     </mat-card>
-
+<br/>
     <mat-card>
         <mat-card-title>Arrêtée la présente facture à la somme de (TTC): </mat-card-title>
         <mat-form-field>
@@ -157,7 +162,7 @@
             <mat-error>lettres uniquement!</mat-error>
         </mat-form-field>
     </mat-card>
-
+<p>Signature</p>
     <mat-card-actions data-html2canvas-ignore class="print-button">
         <button class="mat-elevation-z2" (click)="generatePdf()" mat-raised-button color="primary">Imprimer</button>
     </mat-card-actions>
