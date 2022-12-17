@@ -1,0 +1,21 @@
+.dashboard {
+    max-width: 50%;
+    display: block;
+    flex-direction: column;
+
+    form {
+        display: flex;
+        justify-content: space-between;
+
+
+    }
+
+    button {
+        width: 50%;
+    }
+}
+
+.mat-form-field {
+    font-size: 1.2rem;
+    // width: 300px;
+}

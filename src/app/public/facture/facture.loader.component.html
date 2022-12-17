@@ -1,0 +1,16 @@
+<div #pdfexport>
+    <mat-card class="dashboard">
+        <form #searchForm="ngForm" (ngSubmit)="loadFactureByNumber(searchForm.value.n)">
+            <button (click)="loadFactureByNumber(searchForm.value.n)" class="mat-elevation-z2" mat-stroked-button
+                color="primary">Charger Facture</button>
+            <input name="n" type="text" ngModel matInput>
+        </form>
+        <button (click)="newFacture()" class="mat-elevation-z2" mat-stroked-button color="primary">Ajouter Nouvelle
+            Facture</button>
+    </mat-card>
+    <ng-container>
+        <ng-container *ngIf="facture$ | async as facture">
+            <app-facture (uploadedFacture)="saveFacture($event)" [facture]="facture"></app-facture>
+        </ng-container>
+    </ng-container>
+</div>

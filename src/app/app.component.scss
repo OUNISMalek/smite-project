@@ -1,22 +1,9 @@
-.example-spacer {
-  flex: 1 1 auto;
+.title-logo {
+  img {
+    display: block;
+    margin: auto;
+  }
 }
-table {
-  width: 100%;
-}
-
-.mat-form-field {
-  font-size: 14px;
-  width: 100%;
-}
-.container{
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-
-
-
 
 /*@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
@@ -338,8 +325,8 @@ button:hover{
     width: 1920px;
   }*/
 
-  /* Responsive Styles */
-  /*@media screen and (max-width: 767px) {
+/* Responsive Styles */
+/*@media screen and (max-width: 767px) {
     .card-container > *:not(.circle-link) ,
     .terminal {
       width: 100%;
@@ -366,12 +353,3 @@ button:hover{
       visibility: hidden;
     }
   }*/
-
-
-
-
-
-
-
-
-  
