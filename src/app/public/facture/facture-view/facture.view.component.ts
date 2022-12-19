@@ -5,15 +5,15 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Facture } from '../../models/facture.model';
+import { Facture } from '../../../models/facture.model';
 
 
 @Component({
-  selector: 'app-facture',
-  templateUrl: './facture.component.html',
-  styleUrls: ['./facture.component.scss'],
+  selector: 'app-facture-view',
+  templateUrl: './facture.view.component.html',
+  styleUrls: ['./facture.view.component.scss'],
 })
-export class FactureComponent implements OnInit, OnChanges {
+export class FactureViewComponent implements OnInit, OnChanges {
 
   dataSource!: MatTableDataSource<AbstractControl>;
   displayedColumns: string[] = ['code', 'service', 'quantite', 'prix_uni_ht', 'prix_ht', 'tva', 'total', 'action'];
@@ -25,7 +25,7 @@ export class FactureComponent implements OnInit, OnChanges {
   pdfName: string = "Facture";
   @Input('facture') facture!: Facture;
   factureForm!: FormGroup;
-  @Output() uploadedFacture  = new EventEmitter<string>();
+  @Output() uploadedFacture = new EventEmitter<string>();
 
   constructor(private fb: FormBuilder) { }
 

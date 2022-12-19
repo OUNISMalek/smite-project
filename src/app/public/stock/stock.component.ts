@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./stock.component.scss']
 })
 export class StockComponent {
-  constructor() { }
+  constructor() { /* constructor is empty */  }
 
   
 

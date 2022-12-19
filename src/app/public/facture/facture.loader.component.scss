@@ -1,21 +1,20 @@
-.dashboard {
-    max-width: 50%;
-    display: block;
-    flex-direction: column;
+// .dashboard {
+//     max-width: 80%;
+//     display: flex;
+//     justify-content: space-evenly;
 
-    form {
-        display: flex;
-        justify-content: space-between;
-
-
-    }
-
-    button {
-        width: 50%;
-    }
-}
+//     form {
+//         input{
+//             margin: auto;
+//             position: absolute;
+//             right: 0;
+//         }
+//     }
+//     button {
+//         width: 50%;
+//     }
+// }
 
 .mat-form-field {
     font-size: 1.2rem;
-    // width: 300px;
 }

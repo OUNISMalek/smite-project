@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { DialogComponent } from './dialog/dialog.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ChargeComponent } from './charge/charge.component';
-import { FactureComponent } from './facture/facture.component';
 import { FactureLoaderComponent } from './facture/facture.loader.component';
 import { DialogChargeComponent } from './dialog-charge/dialog-charge.component';
 import { StockComponent } from './stock/stock.component';
@@ -19,6 +18,7 @@ import { Charge4DialogComponent } from './charge4-dialog/charge4-dialog.componen
 import { MaterialModule } from '../material/material.module';
 import { PublicRoutingModule } from './public-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FactureViewComponent } from './facture/facture-view/facture.view.component';
 
 
 
@@ -27,7 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     DialogComponent,
     DashboardComponent,
     ChargeComponent,
-    FactureComponent,
+    FactureViewComponent,
     FactureLoaderComponent,
     DialogChargeComponent,
     StockComponent,
