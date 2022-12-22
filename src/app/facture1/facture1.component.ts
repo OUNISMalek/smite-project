@@ -7,13 +7,12 @@ import html2canvas from 'html2canvas';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Facture } from '../models/facture.model';
 
-
 @Component({
-  selector: 'app-facture',
-  templateUrl: './facture.component.html',
-  styleUrls: ['./facture.component.scss'],
+  selector: 'app-facture1',
+  templateUrl: './facture1.component.html',
+  styleUrls: ['./facture1.component.scss']
 })
-export class FactureComponent implements OnInit, OnChanges {
+export class Facture1Component implements OnInit {
 
   dataSource!: MatTableDataSource<AbstractControl>;
   displayedColumns: string[] = ['code', 'service', 'quantite', 'prix_uni_ht', 'prix_ht', 'tva', 'total', 'action'];
@@ -88,5 +87,6 @@ export class FactureComponent implements OnInit, OnChanges {
       PDF.save(`${metadataForm.controls['benef_facture'].value || this.pdfName}.pdf`);
     });
   }
-}
 
+
+}

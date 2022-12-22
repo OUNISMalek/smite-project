@@ -2,44 +2,18 @@
     <div class="title-logo">
         <img width="280" alt="SmiteServ" src="../assets/Sans_titre-removebg-preview.png" />
     </div>
-    <mat-card class="info-card">
-        <mat-card-header>
-            <mat-card-title>SMITE Services</mat-card-title>
-            <mat-card-subtitle>Facture</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-content class="entete">
-
-            <mat-card class="description">
-                <mat-card-title> Adresse: </mat-card-title>
-                <mat-card-subtitle>Immeuble CNRPS Tataouine Nord 3263 Tataouine </mat-card-subtitle>
-                <mat-card-title> UI: </mat-card-title>
-                <mat-card-subtitle>1599585/S </mat-card-subtitle>
-                <mat-card-title> RIB: </mat-card-title>
-                <mat-card-subtitle>BH-Bank 14208208101700429341 </mat-card-subtitle>
-            </mat-card>
-
-            <mat-card class="description">
-                <mat-card-title> Email: </mat-card-title>
-                <mat-card-subtitle> smite.service@gmail.com </mat-card-subtitle>
-                <mat-card-title> Tel/Fax: </mat-card-title>
-                <mat-card-subtitle>00216 75 870 889</mat-card-subtitle>
-                <mat-card-title> GSM: </mat-card-title>
-                <mat-card-subtitle>00216 95 225 630</mat-card-subtitle>
-            </mat-card>
-
-        </mat-card-content>
-
-    </mat-card>
-    <mat-card *ngIf="!factureLoaded">
+    <mat-card class="dashboard">
         <mat-card>
-            <button (click)="newFacture()" class="mat-elevation-z2" mat-stroked-button color="primary">Ajouter Nouvelle
-                Facture</button>
+            <button (click)="newFacture()" class="mat-elevation-z2" mat-stroked-button color="primary">Ajouter Nouvelle Facture</button>
         </mat-card>
         <mat-card>
-            <input type="text" matInput #box>
-            <button (click)="loadFactureByNumber(box.value)" class="mat-elevation-z2" mat-raised-button>Charger
-                Facture</button>
+            <input type="text" matInput #box> &nbsp; &nbsp;
+            <button (click)="loadFactureByNumber(box.value)" class="mat-elevation-z2" mat-stroked-button color="warn">Charger Facture</button>
         </mat-card>
     </mat-card>
-    <app-facture *ngIf="factureLoaded" [factureForm]="factureForm"></app-facture>
+    <ng-container>
+        <ng-container *ngIf="facture$ | async as facture">
+            <app-facture (uploadedFacture)="saveFacture($event)" [facture]="facture"></app-facture>
+        </ng-container>
+    </ng-container>
 </div>

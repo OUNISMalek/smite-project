@@ -14,10 +14,16 @@
                     <td mat-cell *matCellDef="let row"> {{row.date | date}} </td>
                   </ng-container>
 
-        <!-- depenses Column -->
-        <ng-container matColumnDef="depenses">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Depenses </th>
-          <td mat-cell *matCellDef="let row"> {{row.depenses}} </td>
+        <!-- declaration Column -->
+        <ng-container matColumnDef="declaration">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Déclaration </th>
+          <td mat-cell *matCellDef="let row"> {{row.declaration}} </td>
+        </ng-container>
+
+        <!-- penalite Column -->
+        <ng-container matColumnDef="penalite">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Pénalité </th>
+          <td mat-cell *matCellDef="let row"> {{row.penalite}} </td>
         </ng-container>
 
             <!-- montant Column -->

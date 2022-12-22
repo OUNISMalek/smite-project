@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
 import { Facture } from "../models/facture.model";
 import { ServfactureService } from "../services/servfacture.service";
 
@@ -11,41 +10,29 @@ import { ServfactureService } from "../services/servfacture.service";
 })
 export class FactureLoaderComponent implements OnInit {
     factureLoaded: boolean = false;
-    factureForm!: FormGroup;
+    requestNewFacture: boolean = false;
     facture!: Facture;
-    factureNumber!: number;
+    facture$!: Observable<Facture>;
 
-    constructor(private fb: FormBuilder,
-        private servfacture: ServfactureService) { }
+
+    constructor(private servfacture: ServfactureService) { }
 
     ngOnInit(): void {
 
-
     }
-
-
-    loadFacture(facture: Facture): FormGroup {
-
-        let factureForm: FormGroup = this.fb.group({
-            ligneFactures: this.fb.array(facture.ligneFactures.map(x => this.fb.group(x))),
-            factureMetadata: this.fb.group(facture.factureMetadata),
-        });
-        return factureForm;
-    }
-
     newFacture() {
-        this.facture = new Facture();
-        this.loadFacture(this.facture);
-        this.factureLoaded = true;
+        this.facture$ = of(new Facture());
+       // this.requestNewFacture = true;
     }
     loadFactureByNumber(s: string) {
         let n = Number(s);
-        this.servfacture.getFacture(n).subscribe({
-            next: (v: Facture) => this.loadFacture(v),
-            error: e => console.warn(e),
-            complete: () => this.factureLoaded = true
-        });
+        this.facture$ = this.servfacture.getFacture(n);
+        this.factureLoaded = true;
     }
-
+    saveFacture(uploadedFacture: string) {
+        // let facture = new Facture();
+        // Object.assign(facture, uploadedFacture);
+        this.servfacture.saveFacture(uploadedFacture).subscribe({ complete: () => alert("Facture sauvegardée") });
+    }
 
 }
