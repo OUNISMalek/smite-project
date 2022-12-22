@@ -22,13 +22,15 @@ export class Charge4DialogComponent implements OnInit {
   ngOnInit(): void {
     this.ChargeForm = this.formBuilder.group({
       date : ['',Validators.required],     
-      depenses:['',Validators.required],
+      declaration:['',Validators.required],
+      penalite:['',Validators.required],
       montant:['',Validators.required],
     });
     if(this.editData){
       this.actionBtn="Update";
       this.ChargeForm.controls['date'].setValue(this.editData.date);
-      this.ChargeForm.controls['depenses'].setValue(this.editData.depenses);
+      this.ChargeForm.controls['declaration'].setValue(this.editData.declaration);
+      this.ChargeForm.controls['penalite'].setValue(this.editData.penalite);
       this.ChargeForm.controls['montant'].setValue(this.editData.montant);
     }
   }

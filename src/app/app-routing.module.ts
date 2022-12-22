@@ -12,6 +12,9 @@ import { Charge2Component } from './charge2/charge2.component';
 import { Charge3Component } from './charge3/charge3.component';
 import { Charge4Component } from './charge4/charge4.component';
 import { FactureLoaderComponent } from './facture/facture.loader.component';
+import { Dashboard1Component } from './dashboard1/dashboard1.component';
+import { Facture1Component } from './facture1/facture1.component';
+
 const routes: Routes = [
  { path: 'stock', component: StockComponent },
  { path: 'charge', component: ChargeComponent },
@@ -21,6 +24,8 @@ const routes: Routes = [
  { path: 'charge2', component: Charge2Component},
  { path: 'charge3', component: Charge3Component},
  { path: 'charge4', component: Charge4Component},
+ { path: 'dashboard1', component: Dashboard1Component},
+ { path: 'facture1', component: Facture1Component},
 ];
 
 @NgModule({
@@ -28,4 +33,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [StockComponent, ChargeComponent, FactureComponent, Charge1Component, Charge2Component, Charge3Component, Charge4Component]
+export const routingComponents = [StockComponent, ChargeComponent, FactureComponent, Charge1Component, Charge2Component, Charge3Component, Charge4Component, Dashboard1Component, Facture1Component]
