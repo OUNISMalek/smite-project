@@ -1,14 +1,6 @@
 {
   "Product": [
     {
-      "code": "E5704860",
-      "productName": "p",
-      "quantity": "1",
-      "date": "2022-11-09T23:00:00.000Z",
-      "category": "A",
-      "id": 7
-    },
-    {
       "code": "E1234567",
       "productName": "vice",
       "quantity": "10",
@@ -79,6 +71,14 @@
       "date": "2022-11-17T23:00:00.000Z",
       "category": "B",
       "id": 17
+    },
+    {
+      "code": "E123554363",
+      "productName": "hjjhhjk",
+      "quantity": "5",
+      "date": "2022-12-19T23:00:00.000Z",
+      "category": "B",
+      "id": 18
     }
   ],
   "Charge": [
@@ -187,6 +187,15 @@
     },
     {
       "id": 4
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
     }
   ],
   "Cotisation": [
@@ -233,7 +242,7 @@
   "Impots": [
     {
       "date": "2022-11-29T23:00:00.000Z",
-      "depenses": "200.000",
+      "depenses": "250.000",
       "montant": "200",
       "id": 1
     }

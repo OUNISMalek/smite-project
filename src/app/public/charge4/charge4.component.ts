@@ -15,7 +15,7 @@ import { Charge4DialogComponent } from '../charge4-dialog/charge4-dialog.compone
 })
 export class Charge4Component implements OnInit {
   title = 'gestionstock';
-  displayedColumns: string[] = ['date','depenses','montant', 'action'];
+  displayedColumns: string[] = ['date','declaration','penalite','montant', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
