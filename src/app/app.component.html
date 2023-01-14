@@ -1,48 +1,83 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-  <span style="margin-left: 8px;" >SMITE-Services</span>
-  <span class="example-spacer"></span>
-<!--<nav>
-  <a mat-button routerLink="/dashboard" routerLinkActive="active">STOCK</a>
-  <a mat-button routerLink="facture" routerLinkActive="active">FACTURE</a>
-  <a mat-button routerLink="/charge" routerLinkActive="active">CHARGE DIVERS</a>
-    <a mat-button routerLink="/charge1" routerLinkActive="active">LES COTISATIONS SOCIALES</a>
-    <a mat-button routerLink="/charge2" routerLinkActive="active">FACTURES D'ACHAT</a>
-    <a mat-button routerLink="/charge3" routerLinkActive="active">REMUNERATION DU PERSONNEL</a>
-    <a mat-button routerLink="/charge4" routerLinkActive="active">IMPOTS</a>
-</nav>-->
-<nav>
-  <ul class="menu">
-    <li>
-      STOCK
-      <ul class="sub-menu">
-        <li><a mat-button routerLink="/dashboard" routerLinkActive="active">STOCK ENTREE</a></li>
-        <li><a mat-button routerLink="/dashboard1" routerLinkActive="active">STOCK SORTIE</a></li>
+    <a routerLink="/stock"
+      ><span style="margin-left: 8px">SMITE-Services</span></a
+    >
+    <span class="example-spacer"></span>
+    <nav>
+      <ul class="menu">
+        <li>
+          STOCK
+          <ul class="sub-menu">
+            <li>
+              <a mat-button routerLink="/dashboard" routerLinkActive="active"
+                >STOCK ENTREE</a
+              >
+            </li>
+            <li>
+              <a mat-button routerLink="/dashboard1" routerLinkActive="active"
+                >STOCK SORTIE</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          FACTURE
+          <ul class="sub-menu">
+            <li>
+              <a mat-button routerLink="facture" routerLinkActive="active"
+                >FACTURE-1</a
+              >
+            </li>
+            <li>
+              <a mat-button routerLink="facture1" routerLinkActive="active"
+                >FACTURE-2</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          CHARGE
+          <ul class="sub-menu">
+            <li>
+              <a mat-button routerLink="/charge" routerLinkActive="active"
+                >CHARGE DIVERS</a
+              >
+            </li>
+            <li>
+              <a mat-button routerLink="/charge1" routerLinkActive="active"
+                >LES COTISATIONS SOCIALES</a
+              >
+            </li>
+            <li>
+              <a mat-button routerLink="/charge2" routerLinkActive="active"
+                >FACTURES D'ACHAT</a
+              >
+            </li>
+            <li>
+              <a mat-button routerLink="/charge3" routerLinkActive="active"
+                >REMUNERATION DU PERSONNEL</a
+              >
+            </li>
+            <li>
+              <a mat-button routerLink="/charge4" routerLinkActive="active"
+                >IMPOTS</a
+              >
+            </li>
+          </ul>
+        </li>
       </ul>
-    </li>
-    <li>
-      FACTURE
-      <ul class="sub-menu">
-        <li><a mat-button routerLink="facture" routerLinkActive="active">FACTURE-1</a></li>
-        <li><a mat-button routerLink="facture1" routerLinkActive="active">FACTURE-2</a></li>
-      </ul>
-    </li>
-    <li>
-      CHARGE
-      <ul class="sub-menu">
-        <li><a mat-button routerLink="/charge" routerLinkActive="active">CHARGE DIVERS</a></li>
-        <li><a mat-button routerLink="/charge1" routerLinkActive="active">LES COTISATIONS SOCIALES</a></li>
-        <li><a mat-button routerLink="/charge2" routerLinkActive="active">FACTURES D'ACHAT</a></li>
-        <li><a mat-button routerLink="/charge3" routerLinkActive="active">REMUNERATION DU PERSONNEL</a></li>
-        <li><a mat-button routerLink="/charge4" routerLinkActive="active">IMPOTS</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-</mat-toolbar-row>
+    </nav>
+  </mat-toolbar-row>
 </mat-toolbar>
+<div class="title-logo">
+  <img
+    width="280"
+    alt="SmiteServ"
+    src="../assets/Sans_titre-removebg-preview.png"
+  />
+</div>
 <router-outlet></router-outlet>
-
 
 <!--<div class="toolbar" role="banner">
   <img
@@ -70,4 +105,3 @@
     </nav>
   </header>
 </div>-->
-

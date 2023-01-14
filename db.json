@@ -99,6 +99,14 @@
       "image": "picture",
       "idFournisseur": "1",
       "id": 18
+    },
+    {
+      "code": "gfrsdfg",
+      "productName": "dfgds",
+      "quantity": "wdfgwdsfg",
+      "date": "2023-01-13T23:00:00.000Z",
+      "category": "B",
+      "id": 19
     }
   ],
   "Charge": [

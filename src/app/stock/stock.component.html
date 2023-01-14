@@ -3,10 +3,17 @@
     <ng-container *ngIf="loading"> No Data ..... </ng-container>
 
     <ng-container *ngIf="!loading">
-      <div class="collapse-action-buttons">
-        <button mat-button (click)="accordion.openAll()">Expand All</button>
-        <button mat-button (click)="accordion.closeAll()">Collapse All</button>
-      </div>
+      <mat-card class="title-card">
+        <mat-card-title>Liste des Produits en stock</mat-card-title>
+        <mat-card-content>
+          <div class="collapse-action-buttons">
+            <button mat-button (click)="accordion.openAll()">Expand All</button>
+            <button mat-button (click)="accordion.closeAll()">
+              Collapse All
+            </button>
+          </div>
+        </mat-card-content>
+      </mat-card>
       <mat-accordion class="headers-align" multi>
         <mat-expansion-panel
           *ngFor="let p of result.data"
