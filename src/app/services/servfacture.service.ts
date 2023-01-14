@@ -1,25 +1,40 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { Facture } from '../models/facture.model';
+import { HttpClient } from '@angular/common/http';
+import { FactureReq, FactureRes } from '../models/facture.model';
+import { environment } from 'src/environments/environment';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ServfactureService {
-
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient) {}
+  host = environment.backEndHost;
 
   saveFacture(data: any) {
-    return this.http.post<any>("http://localhost:3000/Facture/", data);
+    return this.http.post<FactureReq>(this.host + '/facture/', data);
   }
   getFacture(id: number) {
-    return this.http.get<Facture>("http://localhost:3000/Facture/" + id);
+    return this.http.get<FactureRes>(this.host + '/facture/' + id);
   }
-  putFacture(data: any, id: number) {
-    return this.http.put<any>("http://localhost:3000/Facture/" + id, data);
+  updateFacture(data: any, id: number) {
+    return this.http.post<any>(this.host + '/facture/update/' + id, data);
   }
   deleteFacture(id: number) {
-    return this.http.delete<number>("http://localhost:3000/Facture/" + id);
+    return this.http.post<number>(this.host + '/facture/delete/' + id, null);
+  }
+  getAllClientFacture() {
+    return this.http.get<FactureRes>(this.host + '/facture/client/');
+  }
+  getAllFournisseurFacture() {
+    return this.http.get<FactureRes>(this.host + '/facture/fournisseur/');
+  }
+  getAllClientFactureByClientId(id: number) {
+    return this.http.get<FactureRes>(this.host + '/facture/client/' + id);
+  }
+  confirmFacture(id: number) {
+    return this.http.post<number>(this.host + '/facture/confirm/' + id, null);
+  }
+  cancelFacture(id: number) {
+    return this.http.post<number>(this.host + '/facture/cancel/' + id, null);
   }
   // GetCustomer() {
   //   return this.http.get('https://localhost:7118/Customer/GetAll');

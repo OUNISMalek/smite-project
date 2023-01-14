@@ -35,7 +35,7 @@ export class Dashboard1Component implements OnInit {
         })
       }
   getAllProducts(){
-    this.api.getProduct()
+    this.api.getAllProduct()
     .subscribe({
       next:(res)=>{
         this.dataSource = new MatTableDataSource(res);
@@ -61,7 +61,7 @@ export class Dashboard1Component implements OnInit {
   }
 
   deleteProduct(id : number){
-    this.api.deleteProduct(id)
+    this.api.deleteProductById(id)
     .subscribe({
       next:(res)=>{
         alert("Product deleted successfully");

@@ -1,25 +1,33 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Produit } from '../models/produit.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http : HttpClient) { }
+  host = environment.backEndHost;
 
-postProduct(data : any){
-    return this.http.post<any>("http://localhost:3000/Product/", data);
+  addProduct(data: Produit): Observable<Produit> {
+    return this.http.post<Produit>(this.host + '/produit/', data);
   }
-getProduct(){
-    return this.http.get<any>("http://localhost:3000/Product/");
+  getAllProduct(): Observable<Produit[]> {
+    return this.http.get<Produit[]>(this.host + '/produit/');
   }
-putProduct(data : any , id : number){
-    return this.http.put<any>("http://localhost:3000/Product/"+id ,data);
-}
-deleteProduct(id : number){
-    return this.http.delete<any>("http://localhost:3000/Product/"+id);
-}
-
-
+  updateProduct(data: Produit, id: number): Observable<Produit> {
+    return this.http.post<Produit>(this.host + '/produit/update/' + id, data);
+  }
+  deleteProductById(id: number): Observable<number> {
+    return this.http.post<number>(this.host + '/produit/delete/' + id, null);
+  }
+  getProductById(id: number): Observable<Produit> {
+    return this.http.get<Produit>(this.host + '/produit/' + id);
+  }
+  getProductQuantityById(id: number): Observable<number> {
+    return this.http.get<number>(this.host + '/produit/quantity/' + id);
+  }
 }

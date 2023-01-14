@@ -35,7 +35,7 @@ export class DialogChargeComponent implements OnInit {
   addCharge(){
     if(!this.editData){
       if(this.ChargeForm.valid){
-        this.servcharge.postCharge(this.ChargeForm.value)
+        this.servcharge.addCharge(this.ChargeForm.value)
         .subscribe({
           next:(res)=>{
             alert("Charge added successfully");
@@ -52,7 +52,7 @@ export class DialogChargeComponent implements OnInit {
     }
     }
     updateCharge(){
-      this.servcharge.putCharge(this.ChargeForm.value , this.editData.id)
+      this.servcharge.updateCharge(this.ChargeForm.value , this.editData.id)
       .subscribe({
         next:(res)=>{
           alert("Charge updated successfully");

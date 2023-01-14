@@ -1,49 +1,38 @@
-export class Facture {
-    ligneFactures: Array<LigneFacture> = Array.of(new LigneFacture());
-    factureMetadata: FactureMetadata = new FactureMetadata();
-    id: number = 0;
+export interface FactureReq {
+  codeFacture: string;
+  dateFacture: Date;
+  ligneFactures: Array<LigneFactureReq>;
+  typeFacture: TypeFacture;
+  idClient: number;
 }
-export class LigneFacture {
-    code: string = '';
-    service: string = '';
-    quantite: string = '';
-    prix_uni_ht: string = '';
-    prix_ht: string = '';
-    tva: string = '';
-    total: string = '';
+export interface LigneFactureReq {
+  idProduit: number;
+  quantite: number;
 }
-export class FactureMetadata {
-    total_lettre: string = '';
-    total_ttc: number = 0;
-    taxes: number = 0;
-    total_ht: number = 0;
-    benef_facture: string = '';
-    date_facturation: string = '';
-    num_facture: string = '';
-    titre_facture: string = '';
+export interface FactureRes {
+  id: number;
+  codeFacture: string;
+  dateFacture: Date;
+  ligneFactures: Array<LigneFactureRes>;
+  idClient: number;
+  dateCreation: Date;
+  typeFacture: TypeFacture;
+  etatFacture: EtatFacture;
 }
 
-// export interface Facture {
-//     ligneFactures: Array<LigneFacture>,
-//     factureMetadata: FactureMetadata,
-//     id: number
-// }
-// export interface LigneFacture {
-//     code: string,
-//     service: string,
-//     quantite: string,
-//     prix_uni_ht: string,
-//     prix_ht: string,
-//     tva: string,
-//     total: string
-// }
-// export interface FactureMetadata {
-//     total_lettre: string,
-//     total_ttc: number,
-//     taxes: number,
-//     total_ht: number,
-//     benef_facture: string,
-//     num_facture: string,
-//     titre_facture: string
-// }
-
+export interface LigneFactureRes {
+  id: number;
+  idProduit: number;
+  quantite: number;
+  idFacture: number;
+}
+export enum TypeFacture {
+  FACTURE_CLIENT,
+  FACTURE_FOURNISSEUR,
+  AUTRE_FACTURE,
+}
+export enum EtatFacture {
+  NON_VALIDEE,
+  VALIDEE,
+  ANNULEE,
+}

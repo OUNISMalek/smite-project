@@ -8,6 +8,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatCardModule} from '@angular/material/card';
 import {MatDialogModule} from '@angular/material/dialog';
 import {DialogComponent } from './dialog/dialog.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -15,6 +16,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule } from '@angular/material/core';
+import {MatExpansionModule} from '@angular/material/expansion';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
@@ -34,10 +36,12 @@ import { Charge1DialogComponent } from './charge1-dialog/charge1-dialog.componen
 import { Charge2DialogComponent } from './charge2-dialog/charge2-dialog.component';
 import { Charge3DialogComponent } from './charge3-dialog/charge3-dialog.component';
 import { Charge4DialogComponent } from './charge4-dialog/charge4-dialog.component';
-import {MatCardModule} from '@angular/material/card';
 import { FactureLoaderComponent } from './facture/facture.loader.component';
 import { Dashboard1Component } from './dashboard1/dashboard1.component';
 import { Facture1Component } from './facture1/facture1.component';
+import { ClientComponent } from './client/client.component';
+import { FournisseurComponent } from './fournisseur/fournisseur.component';
+import { InventaireComponent } from './inventaire/inventaire.component';
 
 @NgModule({
   
@@ -62,6 +66,9 @@ import { Facture1Component } from './facture1/facture1.component';
     Charge4DialogComponent,
     Dashboard1Component,
     Facture1Component,
+    ClientComponent,
+    FournisseurComponent,
+    InventaireComponent,
     
   ],
   imports: [
@@ -85,6 +92,7 @@ import { Facture1Component } from './facture1/facture1.component';
     MatPaginatorModule,
     MatSortModule,
     MatCardModule,
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

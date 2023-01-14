@@ -40,7 +40,7 @@ export class Charge1Component implements OnInit {
 }
 
 getAllCharges(){
-this.servch1.getCharge()
+this.servch1.getAllCharge()
 .subscribe({
 next:(res)=>{
   this.dataSource = new MatTableDataSource(res);

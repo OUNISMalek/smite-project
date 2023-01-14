@@ -1,83 +1,103 @@
 {
-  "Product": [
+  "Produit": [
     {
-      "code": "E1234567",
-      "productName": "vice",
-      "quantity": "10",
-      "date": "2022-11-09T23:00:00.000Z",
-      "category": "B",
+      "ref": "E1234567",
+      "nom": "vice",
+      "quantite": "10",
+      "prix": "2000",
+      "tauxTva": "11",
+      "image": "picture",
+      "idFournisseur": "1",
       "id": 8
     },
     {
-      "code": "E1452368",
-      "productName": "tourne-vice",
-      "quantity": "8",
-      "date": "2022-11-09T23:00:00.000Z",
-      "category": "B",
+      "ref": "E1452368",
+      "nom": "tourne-vice",
+      "quantite": "8",
+      "prix": "2000",
+      "tauxTva": "11",
+      "image": "picture",
+      "idFournisseur": "1",
       "id": 10
     },
     {
-      "code": "E6187006",
-      "productName": "COFF",
-      "quantity": "1",
-      "date": "2022-11-09T23:00:00.000Z",
-      "category": "A",
+      "ref": "E6187006",
+      "nom": "COFF",
+      "quantite": "1",
+      "prix": "2000",
+      "tauxTva": "11",
+      "image": "picture",
+      "idFournisseur": "1",
       "id": 11
     },
     {
-      "code": "E4427619",
-      "productName": "trs 2*16",
-      "quantity": "15",
-      "date": "2022-11-09T23:00:00.000Z",
-      "category": "A",
+      "ref": "E4427619",
+      "nom": "trs 2*16",
+      "quantite": "15",
+      "prix": "2000",
+      "tauxTva": "11",
+      "image": "picture",
+      "idFournisseur": "1",
       "id": 12
     },
     {
-      "code": "E6119146",
-      "productName": "pince p63",
-      "quantity": "2",
-      "date": "2022-11-09T23:00:00.000Z",
-      "category": "B",
+      "ref": "E6119146",
+      "nom": "pince p63",
+      "quantite": "2",
+      "prix": "2000",
+      "tauxTva": "11",
+      "image": "picture",
+      "idFournisseur": "1",
       "id": 13
     },
     {
-      "code": "E7895369",
-      "productName": "pince",
-      "quantity": "5",
-      "date": "2022-11-15T23:00:00.000Z",
-      "category": "B",
+      "ref": "E7895369",
+      "nom": "pince",
+      "quantite": "5",
+      "prix": "2000",
+      "tauxTva": "11",
+      "image": "picture",
+      "idFournisseur": "1",
       "id": 14
     },
     {
-      "code": "E0213456987",
-      "productName": "hitre",
-      "quantity": "5",
-      "date": "2022-11-17T23:00:00.000Z",
-      "category": "B",
+      "ref": "E0213456987",
+      "nom": "hitre",
+      "quantite": "5",
+      "prix": "2000",
+      "tauxTva": "11",
+      "image": "picture",
+      "idFournisseur": "1",
       "id": 15
     },
     {
-      "code": "E0025469",
-      "productName": "router",
-      "quantity": "7",
-      "date": "2022-11-17T23:00:00.000Z",
-      "category": "C",
+      "ref": "E0025469",
+      "nom": "router",
+      "quantite": "7",
+      "prix": "2000",
+      "tauxTva": "11",
+      "image": "picture",
+      "idFournisseur": "1",
       "id": 16
     },
     {
-      "code": "E147963",
-      "productName": "cable",
-      "quantity": "5",
-      "date": "2022-11-17T23:00:00.000Z",
-      "category": "B",
+      "ref": "E147963",
+      "nom": "cable",
+      "quantite": "5",
+      "prix": "2000",
+      "tauxTva": "11",
+      "image": "picture",
+      "idFournisseur": "1",
       "id": 17
     },
     {
-      "code": "E123554363",
-      "productName": "hjjhhjk",
-      "quantity": "5",
-      "date": "2022-12-19T23:00:00.000Z",
-      "category": "B",
+      "ref": "E123554363",
+      "nom": "hjjhhjk",
+      "quantite": "5",
+      "prix": "2000",
+      "tauxTva": "11",
+      "image": "picture",
+      "idFournisseur": "1",
       "id": 18
     }
   ],
@@ -113,133 +133,6 @@
       "trimestre": "jun-aug",
       "etatcotisation": "cotisation",
       "id": 5
-    }
-  ],
-  "Facture": [
-    {
-      "ligneFactures": [
-        {
-          "code": "500",
-          "service": "dkzfvjkamlj",
-          "quantite": "522",
-          "prix_uni_ht": "552",
-          "prix_ht": "1000",
-          "tva": "2255",
-          "total": "2222"
-        },
-        {
-          "code": "501",
-          "service": "dkzfvjkamlj",
-          "quantite": "522",
-          "prix_uni_ht": "552",
-          "prix_ht": "1000",
-          "tva": "2255",
-          "total": "55"
-        },
-        {
-          "code": "502",
-          "service": "dkzfvjkamlj",
-          "quantite": "522",
-          "prix_uni_ht": "552",
-          "prix_ht": "1000",
-          "tva": "2255",
-          "total": "2000"
-        }
-      ],
-      "factureMetadata": {
-        "total_lettre": "mille cinq cent DT",
-        "total_ttc": "150",
-        "taxes": "500",
-        "total_ht": "1500",
-        "benef_facture": "La Poste Tunisienne",
-        "num_facture": "22NOV2022",
-        "titre_facture": "travaux generales"
-      },
-      "id": 1
-    },
-    {
-      "ligneFactures": [
-        {
-          "code": "k20",
-          "service": "kmmù;,nnnjh",
-          "quantite": "100",
-          "prix_uni_ht": "100",
-          "prix_ht": "9000",
-          "tva": "9",
-          "total": "99900"
-        }
-      ],
-      "factureMetadata": {
-        "total_lettre": "cent cinquante DT",
-        "total_ttc": "950",
-        "taxes": "00",
-        "total_ht": "00",
-        "benef_facture": "STEG",
-        "num_facture": "02DEC2022",
-        "titre_facture": "Depenses multiples"
-      },
-      "id": 2
-    },
-    {
-      "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "id": 5
-    },
-    {
-      "id": 6
-    }
-  ],
-  "Cotisation": [
-    {
-      "date": "2022-11-29T23:00:00.000Z",
-      "montant": "200",
-      "trimestre": "jun-Aug",
-      "etatcotisation": "cotisation",
-      "id": 2
-    },
-    {
-      "date": "2022-11-29T23:00:00.000Z",
-      "montant": "cotisation",
-      "trimestre": "Janv-Mars",
-      "etatcotisation": "cot",
-      "id": 3
-    }
-  ],
-  "Achat": [
-    {
-      "date": "2022-11-29T23:00:00.000Z",
-      "designation": "trs",
-      "fournisseur": "smite",
-      "montant": "120",
-      "modepaiement": "chéque",
-      "id": 2
-    },
-    {
-      "date": "2022-11-29T23:00:00.000Z",
-      "designation": "1223",
-      "fournisseur": "hjklk",
-      "montant": "1235",
-      "modepaiement": "hjj",
-      "id": 3
-    }
-  ],
-  "Personnel": [
-    {
-      "salarie": "saaed",
-      "montant": "1000",
-      "id": 1
-    }
-  ],
-  "Impots": [
-    {
-      "date": "2022-11-29T23:00:00.000Z",
-      "depenses": "250.000",
-      "montant": "200",
-      "id": 1
     }
   ]
 }

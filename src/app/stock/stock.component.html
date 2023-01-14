@@ -1,4 +1,53 @@
-<div class="container" >
-    <h1> This is about Component </h1>
-    <h3> Try navigating to other components </h3>
-  </div>
+<div class="container">
+  <ng-container *ngIf="produits$ | async as result">
+    <ng-container *ngIf="loading"> No Data ..... </ng-container>
+
+    <ng-container *ngIf="!loading">
+      <div class="collapse-action-buttons">
+        <button mat-button (click)="accordion.openAll()">Expand All</button>
+        <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+      </div>
+      <mat-accordion class="headers-align" multi>
+        <mat-expansion-panel
+          *ngFor="let p of result.data"
+          style="display: contents"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title> {{ p.ref }} </mat-panel-title>
+            <mat-panel-title> {{ p.nom }} </mat-panel-title>
+            <mat-panel-description>
+              <p>Quantité : {{ p.quantite }}</p>
+              <mat-icon>laptop_windows</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <div class="expansion-panel-items">
+            <mat-card>
+              <mat-card-title>Id</mat-card-title>
+              <mat-card-content>{{ p.id }}</mat-card-content>
+            </mat-card>
+            <mat-card>
+              <mat-card-title>Nom</mat-card-title>
+              <mat-card-content>{{ p.nom }}</mat-card-content>
+            </mat-card>
+            <mat-card>
+              <mat-card-title>Prix</mat-card-title>
+              <mat-card-content>{{ p.prix }}</mat-card-content>
+            </mat-card>
+            <mat-card>
+              <mat-card-title>Quantité</mat-card-title>
+              <mat-card-content>{{ p.quantite }}</mat-card-content>
+            </mat-card>
+            <mat-card>
+              <mat-card-title>TauxTva</mat-card-title>
+              <mat-card-content>{{ p.tauxTva }}</mat-card-content>
+            </mat-card>
+            <mat-card>
+              <mat-card-title>Fournisseur</mat-card-title>
+              <mat-card-content>{{ p.idFournisseur }}</mat-card-content>
+            </mat-card>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </ng-container>
+  </ng-container>
+</div>
