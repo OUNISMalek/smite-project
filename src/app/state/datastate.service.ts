@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
-import { AppEvent } from './data.model';
+import { BehaviorSubject } from 'rxjs';
+import { AppContext, AppEvent } from './data.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class DatastateService {
-  sourceEventSubject: Subject<AppEvent> = new Subject<AppEvent>();
+export class DataStateService {
+  sourceEventSubject: BehaviorSubject<AppEvent> = new BehaviorSubject<AppEvent>(
+    { appContext: AppContext.NO_ACTION }
+  );
   sourceEventSubjectObservable = this.sourceEventSubject.asObservable();
-  
+
   publishEvent(event: AppEvent) {
     this.sourceEventSubject.next(event);
   }

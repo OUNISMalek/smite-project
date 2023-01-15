@@ -9,17 +9,14 @@ import { ServfactureService } from '../services/servfacture.service';
   styleUrls: ['./dialog-facture.component.scss'],
 })
 export class DialogFactureComponent implements OnInit {
-  FactureForm!: FormGroup;
-  actionBtn: String = 'Save';
+  ligneForm!: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
-    private servfacture: ServfactureService,
     @Inject(MAT_DIALOG_DATA) public editData: any,
-    private dialogRef: MatDialogRef<DialogFactureComponent>
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.FactureForm = this.formBuilder.group({
+    this.ligneForm = this.formBuilder.group({
       code: ['', Validators.required],
       service: ['', Validators.required],
       quantite: ['', Validators.required],
@@ -29,14 +26,13 @@ export class DialogFactureComponent implements OnInit {
       total: ['', Validators.required],
     });
     if (this.editData) {
-      this.actionBtn = 'Update';
-      this.FactureForm.controls['code'].setValue(this.editData.code);
-      this.FactureForm.controls['service'].setValue(this.editData.service);
-      this.FactureForm.controls['quantite'].setValue(this.editData.quantite);
-      this.FactureForm.controls['prix_uni_ht'].setValue(this.editData.prix_uni_ht);
-      this.FactureForm.controls['prix_ht'].setValue(this.editData.prix_ht);
-      this.FactureForm.controls['tva'].setValue(this.editData.tva);
-      this.FactureForm.controls['total'].setValue(this.editData.total);
+      this.ligneForm.controls['code'].setValue(this.editData.code);
+      this.ligneForm.controls['service'].setValue(this.editData.service);
+      this.ligneForm.controls['quantite'].setValue(this.editData.quantite);
+      this.ligneForm.controls['prix_uni_ht'].setValue(this.editData.prix_uni_ht);
+      this.ligneForm.controls['prix_ht'].setValue(this.editData.prix_ht);
+      this.ligneForm.controls['tva'].setValue(this.editData.tva);
+      this.ligneForm.controls['total'].setValue(this.editData.total);
     }
   }
   // addLigneFacture() {

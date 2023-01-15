@@ -4,9 +4,10 @@ export enum DataStateEnum {
   ERROR,
 }
 export enum AppContext {
+  NO_ACTION,
+  NEWFACTURE,
   PRODUIT,
   CLIENT,
-  FACTURE,
   FOURNISSEUR,
   CHARGE,
   MVT_STOCK,

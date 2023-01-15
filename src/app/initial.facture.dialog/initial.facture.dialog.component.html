@@ -1,0 +1,48 @@
+<h1>Nouvelle facture</h1>
+<div mat-dialog-content>
+  <form [formGroup]="newFactureForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Reference facture</mat-label>
+      <input formControlName="codeFacture" matInput placeholder="Ref" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input
+        formControlName="date"
+        matInput
+        [matDatepicker]="picker"
+        matInput
+        formControlName="dateFacture"
+      />
+
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Type facture</mat-label>
+      <mat-select formControlName="typeFacture" placeholder="Type">
+        <mat-option value="FACTURE_CLIENT">A</mat-option>
+        <mat-option value="FACTURE_FOURNISSEUR">B</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Client ou Fournisseur</mat-label>
+      <input formControlName="idClient" matInput placeholder="Quantité" />
+    </mat-form-field>
+
+    <div mat-dialog-action>
+      <button mat-raised-button mat-dialog-close>Close</button>
+      <button
+        style="margin-left: 8px"
+        mat-raised-button
+        color="primary"
+        [mat-dialog-close]="newFactureForm.value"
+      >
+        OK
+      </button>
+    </div>
+    &nbsp;
+  </form>
+</div>

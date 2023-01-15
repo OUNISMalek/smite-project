@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FactureReq, FactureRes } from '../models/facture.model';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -9,31 +10,34 @@ export class ServfactureService {
   constructor(private http: HttpClient) {}
   host = environment.backEndHost;
 
-  saveFacture(data: any) {
+  saveFacture(data: FactureReq):Observable<FactureReq> {
     return this.http.post<FactureReq>(this.host + '/facture/', data);
   }
-  getFacture(id: number) {
+  getFacture(id: number):Observable<FactureRes> {
     return this.http.get<FactureRes>(this.host + '/facture/' + id);
   }
-  updateFacture(data: any, id: number) {
-    return this.http.post<any>(this.host + '/facture/update/' + id, data);
+  updateFacture(data: FactureReq, id: number) {
+    return this.http.post<FactureReq>(this.host + '/facture/update/' + id, data);
   }
-  deleteFacture(id: number) {
+  deleteFacture(id: number):Observable<number> {
     return this.http.post<number>(this.host + '/facture/delete/' + id, null);
   }
-  getAllClientFacture() {
-    return this.http.get<FactureRes>(this.host + '/facture/client/');
+  getAllFacture():Observable<FactureRes[]> {
+    return this.http.get<FactureRes[]>(this.host + '/facture/');
   }
-  getAllFournisseurFacture() {
-    return this.http.get<FactureRes>(this.host + '/facture/fournisseur/');
+  getAllClientFacture():Observable<FactureRes[]> {
+    return this.http.get<FactureRes[]>(this.host + '/facture/client/');
   }
-  getAllClientFactureByClientId(id: number) {
-    return this.http.get<FactureRes>(this.host + '/facture/client/' + id);
+  getAllFournisseurFacture():Observable<FactureRes[]> {
+    return this.http.get<FactureRes[]>(this.host + '/facture/fournisseur/');
   }
-  confirmFacture(id: number) {
+  getAllClientFactureByClientId(id: number) :Observable<FactureRes[]>{
+    return this.http.get<FactureRes[]>(this.host + '/facture/client/' + id);
+  }
+  confirmFacture(id: number):Observable<number> {
     return this.http.post<number>(this.host + '/facture/confirm/' + id, null);
   }
-  cancelFacture(id: number) {
+  cancelFacture(id: number) :Observable<number>{
     return this.http.post<number>(this.host + '/facture/cancel/' + id, null);
   }
   // GetCustomer() {

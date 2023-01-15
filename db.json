@@ -141,6 +141,74 @@
       "trimestre": "jun-aug",
       "etatcotisation": "cotisation",
       "id": 5
+    },
+    {
+      "date": "2023-01-08T23:00:00.000Z",
+      "montant": "1200",
+      "charge": "okoko",
+      "id": 6
+    }
+  ],
+  "Facture": [
+    {
+      "id": "1",
+      "codeFacture": "EzAAR",
+      "dateFacture": "2022-11-29T23:00:00.000Z",
+      "ligneFacture": [],
+      "idClient": "3",
+      "dateCreation": "2022-11-29T23:00:00.000Z",
+      "typeFacture": "FACTURE_CLIENT",
+      "etatFacture": "VALIDEE"
+    },
+    {
+      "id": "1",
+      "codeFacture": "EzAAR",
+      "dateFacture": "2022-11-29T23:00:00.000Z",
+      "ligneFacture": [],
+      "idClient": "3",
+      "dateCreation": "2022-11-29T23:00:00.000Z",
+      "typeFacture": "FACTURE_CLIENT",
+      "etatFacture": "VALIDEE"
+    },
+    {
+      "id": "1",
+      "codeFacture": "EzAAR",
+      "dateFacture": "2022-11-29T23:00:00.000Z",
+      "ligneFacture": [],
+      "idClient": "3",
+      "dateCreation": "2022-11-29T23:00:00.000Z",
+      "typeFacture": "FACTURE_CLIENT",
+      "etatFacture": "VALIDEE"
+    },
+    {
+      "id": "1",
+      "codeFacture": "EzAAR",
+      "dateFacture": "2022-11-29T23:00:00.000Z",
+      "ligneFacture": [],
+      "idClient": "3",
+      "dateCreation": "2022-11-29T23:00:00.000Z",
+      "typeFacture": "FACTURE_CLIENT",
+      "etatFacture": "VALIDEE"
+    },
+    {
+      "id": "1",
+      "codeFacture": "EzAAR",
+      "dateFacture": "2022-11-29T23:00:00.000Z",
+      "ligneFacture": [],
+      "idClient": "3",
+      "dateCreation": "2022-11-29T23:00:00.000Z",
+      "typeFacture": "FACTURE_CLIENT",
+      "etatFacture": "VALIDEE"
+    },
+    {
+      "id": "1",
+      "codeFacture": "EzAAR",
+      "dateFacture": "2022-11-29T23:00:00.000Z",
+      "ligneFacture": [],
+      "idClient": "3",
+      "dateCreation": "2022-11-29T23:00:00.000Z",
+      "typeFacture": "FACTURE_CLIENT",
+      "etatFacture": "VALIDEE"
     }
   ]
 }

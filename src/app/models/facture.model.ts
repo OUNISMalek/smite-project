@@ -36,3 +36,18 @@ export enum EtatFacture {
   VALIDEE,
   ANNULEE,
 }
+export interface NewFactData {
+  codeFacture: string;
+  datFacture: Date;
+  typeFacture: TypeFacture;
+  idClient: number;
+}
+export interface NewLigneFact {
+  code: string;
+  service: string;
+  quantite: string;
+  prix_uni_ht: string;
+  prix_ht: string;
+  tva: string;
+  total: string;
+}

@@ -13,12 +13,11 @@
   margin: 0 auto;
 }
 
-
-.description{
+.description {
   justify-content: left;
   padding: auto;
 }
-.contact{
+.contact {
   justify-content: right;
   padding: auto;
 }
@@ -28,37 +27,32 @@
   padding: auto;
   margin: auto;
 }
-.dashboard{
-  display: flex;
-  justify-content: space-between;
-}
 
 .facture-number {
   display: flex;
   justify-content: space-evenly;
   margin: 5px auto;
- 
 }
 
 .table-facture {
   width: 95%;
   margin: auto;
-  th{
+  th {
     font-weight: bold;
     font-style: oblique;
     color: black;
   }
 }
-.mat-column-code{
+.mat-column-code {
   border-right: 1px solid currentColor;
   text-align: center;
   width: 20px;
   padding-right: 10px;
 }
-.mat-column-service{
+.mat-column-service {
   padding-left: 10px;
 }
-.mat-column-action{
+.mat-column-action {
   border-left: 1px solid currentColor;
   padding-left: 10px;
 }
@@ -74,21 +68,20 @@
   justify-content: flex-end;
 }
 
-.sommes-totales{
+.sommes-totales {
   width: 70%;
   margin-left: 70%;
   display: flex;
   flex-direction: column;
-  
 }
-p,h3{
+p,
+h3 {
   display: flex;
   margin-top: 60px;
   justify-content: right;
 }
-.facture{
+.facture {
   display: flex;
   justify-content: left;
   padding: auto;
-
 }
