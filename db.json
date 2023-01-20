@@ -107,6 +107,14 @@
       "date": "2023-01-13T23:00:00.000Z",
       "category": "B",
       "id": 19
+    },
+    {
+      "code": "doofo",
+      "productName": "hello",
+      "quantity": "15",
+      "date": "2023-01-24T23:00:00.000Z",
+      "category": "B",
+      "id": 20
     }
   ],
   "Charge": [

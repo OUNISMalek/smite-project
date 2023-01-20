@@ -14,6 +14,10 @@
           </div>
         </mat-card-content>
       </mat-card>
+      <div class="action-buttons">
+        <button mat-stroked-button (click)="addProduct()">Ajouter Entree Stock</button>
+        <button mat-stroked-button (click)="removeProduct()">Supprimer Entree Stock</button>
+      </div>
       <mat-accordion class="headers-align" multi>
         <mat-expansion-panel
           *ngFor="let p of result.data"

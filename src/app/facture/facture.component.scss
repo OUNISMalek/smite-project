@@ -9,8 +9,9 @@
 }
 
 .container {
+  display: flex;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0px auto;
 }
 
 .description {
@@ -28,10 +29,11 @@
   margin: auto;
 }
 
-.facture-number {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 5px auto;
+.facture-info {
+  //  display: flex;
+   margin: 15px auto;
+  // justify-content: space-evenly;
+  // margin: 5px auto;
 }
 
 .table-facture {

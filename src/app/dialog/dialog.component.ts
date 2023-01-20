@@ -10,7 +10,7 @@ import { MatDialogRef} from '@angular/material/dialog';
 })
 export class DialogComponent implements OnInit {
 productForm !: FormGroup;
-actionBtn : String = "Save";
+actionBtn : string = "Save";
   constructor(
     private formBuilder : FormBuilder , 
     private api : ApiService , 

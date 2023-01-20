@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Produit } from '../models/produit.model';
+import { ApiService } from '../services/api.service';
 import { ServfactureService } from '../services/servfacture.service';
 
 @Component({
@@ -12,7 +14,8 @@ export class DialogFactureComponent implements OnInit {
   ligneForm!: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public editData: any,
+    private api: ApiService,
+    @Inject(MAT_DIALOG_DATA) public editData: any
   ) {}
 
   ngOnInit(): void {
@@ -35,34 +38,8 @@ export class DialogFactureComponent implements OnInit {
       this.ligneForm.controls['total'].setValue(this.editData.total);
     }
   }
-  // addLigneFacture() {
-  //   if (!this.editData) {
-  //     if (this.FactureForm.valid) {
-  //       this.servfacture.postLigneFacture(this.FactureForm.value).subscribe({
-  //         next: (res) => {
-  //           this.FactureForm.reset();
-  //           this.dialogRef.close('saved');
-  //         },
-  //         error: () => {
-  //           alert('Error while adding orderLine');
-  //         },
-  //       });
-  //     }
-  //   } else {
-  //     this.updateFacture();
-  //   }
-  // }
-  // updateFacture() {
-  //   this.servfacture
-  //     .putLigneFacture(this.FactureForm.value, this.editData.id)
-  //     .subscribe({
-  //       next: (res) => {
-  //         this.FactureForm.reset();
-  //         this.dialogRef.close('updated');
-  //       },
-  //       error: () => {
-  //         alert('Error while updating !');
-  //       },
-  //     });
-  // }
+  //onCodeInput(val: string): Produit {
+  // return this.api.lookupProduit(val);
+  //}
+  
 }

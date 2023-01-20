@@ -57,7 +57,6 @@ export class FactureComponent implements OnInit {
   @ViewChild('pdfexport', { static: false }) public pdfExport!: ElementRef;
   @ViewChild(MatTable) table!: MatTable<any>;
   pdfName: string = 'Facture';
-  @Input('loadedFacture') loadedFacture: FactureRes = {} as FactureRes;
   facture: FactureReq = {} as FactureReq;
   newFacture?: NewFactData;
   newLigne: NewLigneFact = {
@@ -122,13 +121,17 @@ export class FactureComponent implements OnInit {
     this.table.renderRows();
   }
   editLigneFacture(index: number, rowData: NewLigneFact) {
-    const dialogRef = this.dialog.open(DialogFactureComponent, { data: rowData });
-    dialogRef.afterClosed().subscribe((res) => {
-      if (res) {
-        this.ligneFactures.at(index).setValue(res);
-      }
-      this.table.renderRows();
+    const dialogRef = this.dialog.open(DialogFactureComponent, {
+      data: rowData,
     });
+    dialogRef.afterClosed().pipe(
+      map((res) => {
+        if (res) {
+          this.ligneFactures.at(index).setValue(res);
+        }
+        this.table.renderRows();
+      })
+    );
   }
   resetLigneFactures() {
     this.ligneFactures.reset();
@@ -136,13 +139,15 @@ export class FactureComponent implements OnInit {
   }
   addLigneFacture() {
     const dialogRef = this.dialog.open(DialogFactureComponent);
-    dialogRef.afterClosed().subscribe((res) => {
-      if (res) {
-        this.newLigne = res;
-        this.ligneFactures.push(this.fb.group(this.newLigne));
-        this.table.renderRows();
-      }
-    });
+    dialogRef.afterClosed().pipe(
+      map((res) => {
+        if (res) {
+          this.newLigne = res;
+          this.ligneFactures.push(this.fb.group(this.newLigne));
+          this.table.renderRows();
+        }
+      })
+    );
   }
 
   onSubmit() {

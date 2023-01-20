@@ -43,6 +43,7 @@ import { ClientComponent } from './client/client.component';
 import { FournisseurComponent } from './fournisseur/fournisseur.component';
 import { InventaireComponent } from './inventaire/inventaire.component';
 import { InitialFactureDialogComponent } from './initial.facture.dialog/initial.facture.dialog.component';
+import { DialogProductComponent } from './dialog-product/dialog-product.component';
 
 @NgModule({
   
@@ -71,6 +72,7 @@ import { InitialFactureDialogComponent } from './initial.facture.dialog/initial.
     FournisseurComponent,
     InventaireComponent,
     InitialFactureDialogComponent,
+    DialogProductComponent,
     
   ],
   imports: [
