@@ -15,7 +15,6 @@ import { AppDataState, DataStateEnum } from '../state/data.model';
 export class StockComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   produits$!: Observable<AppDataState<Produit[]>>;
-  loading: boolean = true;
   DataStateEnum: typeof DataStateEnum = DataStateEnum;
 
   constructor(private api: ApiService, private dialog: MatDialog) {}
@@ -27,7 +26,6 @@ export class StockComponent implements OnInit {
   getAllProducts() {
     this.produits$ = this.api.getAllProduct().pipe(
       map((data) => {
-        this.loading = false;
         return { dataState: DataStateEnum.LOADED, data: data };
       }),
       startWith({ dataState: DataStateEnum.LOADING }),

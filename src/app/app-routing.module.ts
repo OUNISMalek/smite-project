@@ -14,6 +14,7 @@ import { Charge4Component } from './charge4/charge4.component';
 import { FactureLoaderComponent } from './facture/facture.loader.component';
 import { Dashboard1Component } from './dashboard1/dashboard1.component';
 import { Facture1Component } from './facture1/facture1.component';
+import { FournisseurComponent } from './fournisseur/fournisseur.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'stock', pathMatch: 'full' },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'charge4', component: Charge4Component },
   { path: 'dashboard1', component: Dashboard1Component },
   { path: 'facture1', component: Facture1Component },
+  { path: 'fournisseur', component: FournisseurComponent },
 ];
 
 @NgModule({
@@ -45,4 +47,5 @@ export const routingComponents = [
   Charge4Component,
   Dashboard1Component,
   Facture1Component,
+  FournisseurComponent,
 ];

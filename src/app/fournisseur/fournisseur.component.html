@@ -1,1 +1,72 @@
-<p>fournisseur works!</p>
+<div class="container">
+  <div class="action-buttons">
+    <button mat-stroked-button (click)="addFournisseur()">
+      Ajouter Entree Stock
+    </button>
+  </div>
+  <ng-container *ngIf="fournisseurs$ | async as result">
+    <ng-container [ngSwitch]="result.dataState">
+      <ng-container *ngSwitchCase="DataStateEnum.LOADING">
+        Chargement en cours .....
+      </ng-container>
+      <ng-container *ngSwitchCase="DataStateEnum.ERROR">
+        Une erreur est survenue: {{ result.errorMessage }}</ng-container
+      >
+      <ng-container *ngSwitchCase="DataStateEnum.LOADED">
+        <mat-card class="title-card">
+          <mat-card-title>Liste des Produits en stock</mat-card-title>
+          <mat-card-content>
+            <div class="collapse-action-buttons">
+              <button mat-button (click)="accordion.openAll()">
+                Expand All
+              </button>
+              <button mat-button (click)="accordion.closeAll()">
+                Collapse All
+              </button>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <mat-accordion class="headers-align" multi>
+          <mat-expansion-panel
+            *ngFor="let p of result.data"
+            style="display: contents"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title> {{ p.nom }} </mat-panel-title>
+              <mat-panel-title> {{ p.description }} </mat-panel-title>
+              <mat-panel-description>
+                <p>Date de creation : {{ p.dateCreation }}</p>
+                <button (click)="deleteFournisseur(p)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="expansion-panel-items">
+              <mat-card>
+                <mat-card-title>Id</mat-card-title>
+                <mat-card-content>{{ p.id }}</mat-card-content>
+              </mat-card>
+              <mat-card>
+                <mat-card-title>Nom</mat-card-title>
+                <mat-card-content>{{ p.nom }}</mat-card-content>
+              </mat-card>
+              <mat-card>
+                <mat-card-title>Description</mat-card-title>
+                <mat-card-content>{{ p.description }}</mat-card-content>
+              </mat-card>
+              <mat-card>
+                <mat-card-title>Matricule Fiscale</mat-card-title>
+                <mat-card-content>{{ p.matFiscale }}</mat-card-content>
+              </mat-card>
+              <mat-card>
+                <mat-card-title>Date de creation</mat-card-title>
+                <mat-card-content>{{ p.dateCreation }}</mat-card-content>
+              </mat-card>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>
