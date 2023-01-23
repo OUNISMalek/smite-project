@@ -45,13 +45,12 @@ export class FactureLoaderComponent implements OnInit {
   }
   newFacture() {
     const dialogRef = this.dialog.open(InitialFactureDialogComponent);
-    dialogRef.afterClosed().pipe(
-      map((res) => {
-        this.requestNewFacture = res;
-        this.loadNewFacture();
-        this.router.navigateByUrl('/facture');
-      })
-    );
+    dialogRef.afterClosed().subscribe((res) => {
+      this.requestNewFacture = res;
+      this.loadNewFacture();
+      this.router.navigateByUrl('/facture');
+    });
+    
   }
 
   loadNewFacture() {

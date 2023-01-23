@@ -16,6 +16,7 @@ export class StockComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   produits$!: Observable<AppDataState<Produit[]>>;
   loading: boolean = true;
+  DataStateEnum: typeof DataStateEnum = DataStateEnum;
 
   constructor(private api: ApiService, private dialog: MatDialog) {}
 
@@ -37,22 +38,33 @@ export class StockComponent implements OnInit {
   }
   addProduct() {
     const dialogRef = this.dialog.open(DialogProductComponent);
-    dialogRef.afterClosed().pipe(
-      map((req) => {
-        console.log(req);
-        // this.api.addProduct(req).pipe(map((res) => console.log(res)));
-      })
-    );
+    dialogRef.afterClosed().subscribe((req: Produit) => {
+      this.api.addProduct(req).subscribe((res) => {
+        this.getAllProducts();
+      });
+    });
   }
-  removeProduct() {
-    const dialogRef = this.dialog.open(DialogProductComponent);
-    dialogRef.afterClosed().pipe(
-      map((req) => {
-        console.log(req);
-        //this.api.deleteProductById(req.id).pipe(map((res) => console.log(res)));
-      }),
-      startWith(console.log('loading')),
-      catchError((e) => of('error'))
-    );
+  deleteProduct(product: Produit) {
+    const deleteDialog = this.dialog.open(DialogProductComponent, {
+      data: { action1: 'delete', form: product },
+    });
+    deleteDialog.afterClosed().subscribe((req: Produit) => {
+      console.log(req);
+      this.api.deleteProductById(req.id).subscribe((res) => {
+        console.log(res);
+        return res;
+      });
+    });
+  }
+  editProduct(product: Produit) {
+    const editDialog = this.dialog.open(DialogProductComponent, {
+      data: { action1: 'update', form: product },
+    });
+    editDialog.afterClosed().subscribe((req: Produit) => {
+      console.log(req);
+      this.api.updateProduct(req, req.id).subscribe((res) => {
+        console.log(res);
+      });
+    });
   }
 }

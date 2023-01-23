@@ -115,6 +115,61 @@
       "date": "2023-01-24T23:00:00.000Z",
       "category": "B",
       "id": 20
+    },
+    {
+      "ref": "aaaaaaa",
+      "nom": "aaaaaaa",
+      "quantite": "aaaaaaa",
+      "prix": "aaaaaaaaaa",
+      "tauxTva": "aaaaaaaa",
+      "image": "",
+      "idFournisseur": "aaaaaaaa",
+      "id": 21
+    },
+    {
+      "ref": "ezeeezez",
+      "nom": "ezezezez",
+      "quantite": "ezeze",
+      "prix": "zezez",
+      "tauxTva": "ezezeze",
+      "image": "",
+      "idFournisseur": "zezeze",
+      "id": 22
+    },
+    {
+      "ref": "fsdsfsfds",
+      "nom": "dfsfdsfdsfd",
+      "quantite": "fsfsfsfs",
+      "prix": "fsfsfsffs",
+      "tauxTva": "sfsfsdfs",
+      "image": "",
+      "idFournisseur": "fsfsfsf",
+      "id": 23
+    },
+    {
+      "id": 24
+    },
+    {
+      "id": 25
+    },
+    {
+      "id": 26
+    },
+    {
+      "id": 27
+    },
+    {
+      "id": 28
+    },
+    {
+      "ref": "wfxwfwxfwx",
+      "nom": "fwxfwxfwxfx",
+      "quantite": "xwfxwfcxwfcw",
+      "prix": "fxwfcwfxwf",
+      "tauxTva": "wwxfxwfxw",
+      "image": "",
+      "idFournisseur": "fxwcfwfw",
+      "id": 29
     }
   ],
   "Charge": [

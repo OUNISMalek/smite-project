@@ -44,6 +44,7 @@ import { FournisseurComponent } from './fournisseur/fournisseur.component';
 import { InventaireComponent } from './inventaire/inventaire.component';
 import { InitialFactureDialogComponent } from './initial.facture.dialog/initial.facture.dialog.component';
 import { DialogProductComponent } from './dialog-product/dialog-product.component';
+import { DialogConfirmationComponent } from './dialog-confirmation/dialog-confirmation.component';
 
 @NgModule({
   
@@ -73,6 +74,7 @@ import { DialogProductComponent } from './dialog-product/dialog-product.componen
     InventaireComponent,
     InitialFactureDialogComponent,
     DialogProductComponent,
+    DialogConfirmationComponent,
     
   ],
   imports: [
