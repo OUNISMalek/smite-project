@@ -41,12 +41,7 @@
 </div>
 <div mat-dialog-action>
   <button mat-raised-button mat-dialog-close>Close</button>
-  <button
-    mat-raised-button
-    color="primary"
-    [disabled]="!productForm.valid"
-    [mat-dialog-close]="productForm.value"
-  >
+  <button mat-raised-button color="primary" (click)="onSubmit()">
     {{ actionBtn }}
   </button>
 </div>

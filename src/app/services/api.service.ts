@@ -27,7 +27,7 @@ export class ApiService {
     return this.http.get<Produit[]>(this.host + '/produit', this.httpOptions);
   }
   updateProduct(data: Produit, id: number): Observable<Produit> {
-    return this.http.post<Produit>(
+    return this.http.put<Produit>(
       this.host + '/produit/update/' + id,
       data,
       this.httpOptions

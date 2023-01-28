@@ -44,7 +44,7 @@ export class StockComponent implements OnInit {
   }
   deleteProduct(product: Produit) {
     const deleteDialog = this.dialog.open(DialogProductComponent, {
-      data: { action1: 'delete', form: product },
+      data: { action: 'delete', form: product },
     });
     deleteDialog.afterClosed().subscribe((req: Produit) => {
       console.log(req);
@@ -56,7 +56,7 @@ export class StockComponent implements OnInit {
   }
   editProduct(product: Produit) {
     const editDialog = this.dialog.open(DialogProductComponent, {
-      data: { action1: 'update', form: product },
+      data: { action: 'update', form: product },
     });
     editDialog.afterClosed().subscribe((req: Produit) => {
       console.log(req);

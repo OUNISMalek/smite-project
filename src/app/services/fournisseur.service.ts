@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
+import { FournisseurReq, FournisseurRes } from '../models/fournisseur.model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,32 +16,38 @@ export class FournisseurService {
       'Content-Type': 'application/json',
     }),
   };
-  addFournisseur(data: any) {
-    return this.http.post<any>(
+  addFournisseur(data: FournisseurReq): Observable<FournisseurRes> {
+    return this.http.post<FournisseurRes>(
       this.host + '/fournisseur',
       data,
       this.httpOptions
     );
   }
-  getAllFournisseur() {
-    return this.http.get<any>(this.host + '/fournisseur', this.httpOptions);
+  getAllFournisseur(): Observable<FournisseurRes[]> {
+    return this.http.get<FournisseurRes[]>(
+      this.host + '/fournisseur',
+      this.httpOptions
+    );
   }
-  updateFournisseur(data: any, id: number) {
-    return this.http.post<any>(
+  updateFournisseur(
+    data: FournisseurReq,
+    id: number
+  ): Observable<FournisseurRes> {
+    return this.http.put<FournisseurRes>(
       this.host + '/fournisseur/update/' + id,
       data,
       this.httpOptions
     );
   }
-  deleteFournisseurById(id: number) {
-    return this.http.post<any>(
+  deleteFournisseurById(id: number): Observable<number> {
+    return this.http.post<number>(
       this.host + '/fournisseur/delete/' + id,
       null,
       this.httpOptions
     );
   }
-  getFournisseurById(id: number) {
-    return this.http.get<any>(
+  getFournisseurById(id: number): Observable<FournisseurRes> {
+    return this.http.get<FournisseurRes>(
       this.host + '/fournisseur/' + id,
       this.httpOptions
     );

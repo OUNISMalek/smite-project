@@ -1,7 +1,7 @@
 <div class="container">
   <div class="action-buttons">
     <button mat-stroked-button (click)="addFournisseur()">
-      Ajouter Entree Stock
+      Ajouter Fournisseur
     </button>
   </div>
   <ng-container *ngIf="fournisseurs$ | async as result">
@@ -14,7 +14,7 @@
       >
       <ng-container *ngSwitchCase="DataStateEnum.LOADED">
         <mat-card class="title-card">
-          <mat-card-title>Liste des Produits en stock</mat-card-title>
+          <mat-card-title>Liste des Fournisseurs</mat-card-title>
           <mat-card-content>
             <div class="collapse-action-buttons">
               <button mat-button (click)="accordion.openAll()">

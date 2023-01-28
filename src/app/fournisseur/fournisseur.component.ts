@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
 import { Observable, map, startWith, catchError, of } from 'rxjs';
-import { DialogProductComponent } from '../dialog-product/dialog-product.component';
+import { DialogFournisseurComponent } from '../dialog-fournisseur/dialog-fournisseur.component';
 import { FournisseurReq, FournisseurRes } from '../models/fournisseur.model';
 import { FournisseurService } from '../services/fournisseur.service';
 import { AppDataState, DataStateEnum } from '../state/data.model';
@@ -10,7 +10,7 @@ import { AppDataState, DataStateEnum } from '../state/data.model';
 @Component({
   selector: 'app-fournisseur',
   templateUrl: './fournisseur.component.html',
-  styleUrls: ['./fournisseur.component.scss']
+  styleUrls: ['./fournisseur.component.scss'],
 })
 export class FournisseurComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
@@ -35,16 +35,19 @@ export class FournisseurComponent implements OnInit {
     );
   }
   addFournisseur() {
-    const dialogRef = this.dialog.open(DialogProductComponent);
+    const dialogRef = this.dialog.open(DialogFournisseurComponent);
     dialogRef.afterClosed().subscribe((req: FournisseurReq) => {
-      this.api.addFournisseur(req).subscribe(() => {
-        this.getAllProducts();
-      });
+      if (req) {
+        console.log(req);
+        this.api.addFournisseur(req).subscribe(() => {
+          this.getAllProducts();
+        });
+      }
     });
   }
-  deleteFournisseur(product: FournisseurRes) {
-    const deleteDialog = this.dialog.open(DialogProductComponent, {
-      data: { action1: 'delete', form: product },
+  deleteFournisseur(fr: FournisseurRes) {
+    const deleteDialog = this.dialog.open(DialogFournisseurComponent, {
+      data: { action: 'delete', form: fr },
     });
     deleteDialog.afterClosed().subscribe((req: FournisseurRes) => {
       console.log(req);
@@ -54,5 +57,4 @@ export class FournisseurComponent implements OnInit {
       });
     });
   }
-
 }

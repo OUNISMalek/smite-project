@@ -1,7 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 export class AppComponent implements OnInit{
 
 
-  constructor(private router: Router) {
+  constructor() {
   }
   ngOnInit(): void {
     }

@@ -1,0 +1,56 @@
+<h1 mat-dialog-title>Formulaire Client</h1>
+<div mat-dialog-content>
+  <form [formGroup]="clientForm">
+    <mat-form-field appearance="outline">
+      <mat-label>ID</mat-label>
+      <input formControlName="id" matInput placeholder="ID Produit" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nom</mat-label>
+      <input formControlName="nom" matInput placeholder="Nom fournisseur" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tel</mat-label>
+      <input type="tel" formControlName="tel" matInput placeholder="tel" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Mail</mat-label>
+      <input type="email" formControlName="mail" matInput placeholder="mail" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Addresse</mat-label>
+      <input formControlName="addresse1" matInput placeholder="Addresse 1" />
+      <input formControlName="addresse2" matInput placeholder="Addresse 2" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Code Postale</mat-label>
+      <input
+        type="number"
+        formControlName="codePostale"
+        matInput
+        placeholder="Code Postale"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Date de creation</mat-label>
+      <input
+        type="date"
+        formControlName="dateCreation"
+        matInput
+        placeholder=""
+      />
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-action>
+  <button mat-raised-button mat-dialog-close>Close</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()">
+    {{ actionBtn }}
+  </button>
+</div>

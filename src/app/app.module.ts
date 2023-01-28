@@ -1,32 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
-import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatCardModule} from '@angular/material/card';
-import {MatDialogModule} from '@angular/material/dialog';
-import {DialogComponent } from './dialog/dialog.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule } from '@angular/material/core';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule } from '@angular/common/http';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
-import {DashboardComponent } from './dashboard/dashboard.component';
-import {DialogChargeComponent } from './dialog-charge/dialog-charge.component';
-import {ChargeComponent } from './charge/charge.component';
-import {FactureComponent } from './facture/facture.component';
-import {StockComponent } from './stock/stock.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from './dialog/dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DialogChargeComponent } from './dialog-charge/dialog-charge.component';
+import { ChargeComponent } from './charge/charge.component';
+import { FactureComponent } from './facture/facture.component';
+import { StockComponent } from './stock/stock.component';
 import { DialogFactureComponent } from './dialog-facture/dialog-facture.component';
 import { Charge1Component } from './charge1/charge1.component';
 import { Charge2Component } from './charge2/charge2.component';
@@ -45,12 +45,13 @@ import { InventaireComponent } from './inventaire/inventaire.component';
 import { InitialFactureDialogComponent } from './initial.facture.dialog/initial.facture.dialog.component';
 import { DialogProductComponent } from './dialog-product/dialog-product.component';
 import { DialogConfirmationComponent } from './dialog-confirmation/dialog-confirmation.component';
+import { DialogFournisseurComponent } from './dialog-fournisseur/dialog-fournisseur.component';
+import { DialogClientComponent } from './dialog-client/dialog-client.component';
 
 @NgModule({
-  
   declarations: [
     AppComponent,
-    routingComponents,
+
     DialogComponent,
     DashboardComponent,
     ChargeComponent,
@@ -75,7 +76,8 @@ import { DialogConfirmationComponent } from './dialog-confirmation/dialog-confir
     InitialFactureDialogComponent,
     DialogProductComponent,
     DialogConfirmationComponent,
-    
+    DialogFournisseurComponent,
+    DialogClientComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,8 +101,9 @@ import { DialogConfirmationComponent } from './dialog-confirmation/dialog-confir
     MatSortModule,
     MatCardModule,
     MatExpansionModule,
+    MatSnackBarModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

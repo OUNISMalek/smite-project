@@ -7,8 +7,17 @@
     <nav>
       <ul class="menu">
         <li>
-          Fournisseur
-          <a mat-button routerLink="/fournisseur" routerLinkActive="active"></a>
+          Client/Fournisseur
+          <ul class="sub-menu">
+            <li>
+              <a mat-button routerLink="/fournisseur" routerLinkActive="active"
+                >Gestion Fournisseurs</a
+              >
+              <a mat-button routerLink="/client" routerLinkActive="active"
+                >Gestion Clients</a
+              >
+            </li>
+          </ul>
         </li>
         <li>
           STOCK

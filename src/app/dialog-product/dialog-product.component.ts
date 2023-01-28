@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-dialog-product',
@@ -12,12 +13,14 @@ export class DialogProductComponent implements OnInit {
   productForm!: FormGroup;
   constructor(
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public dialogData: any
+    @Inject(MAT_DIALOG_DATA) public dialogData: any,
+    public dialogRef: MatDialogRef<DialogProductComponent>,
+    private snack: MatSnackBar
   ) {}
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
-      id: [{ value: '', disabled: true}],
+      id: [''],
       ref: ['', Validators.required],
       nom: ['', Validators.required],
       quantite: ['', Validators.required],
@@ -27,7 +30,7 @@ export class DialogProductComponent implements OnInit {
       idFournisseur: ['', Validators.required],
     });
     if (this.dialogData) {
-      if (this.dialogData.action1 === 'update') {
+      if (this.dialogData.action === 'update') {
         this.actionBtn = 'Mettre à jour';
         this.productForm.patchValue({
           id: this.dialogData.form.id,
@@ -41,7 +44,7 @@ export class DialogProductComponent implements OnInit {
         });
         this.productForm.controls['id'].disable();
       }
-      if (this.dialogData.action1 === 'delete') {
+      if (this.dialogData.action === 'delete') {
         this.actionBtn = 'Supprimer';
         this.productForm.patchValue({
           id: this.dialogData.form.id,
@@ -59,11 +62,26 @@ export class DialogProductComponent implements OnInit {
         this.productForm.controls['quantite'].disable();
         this.productForm.controls['prix'].disable();
         this.productForm.controls['tauxTva'].disable();
-        // this.productForm.controls['image'].disable(); // not disabling this control so the form stays valid ¯\_(ツ)_/¯
+        this.productForm.controls['image'].disable();
         this.productForm.controls['idFournisseur'].disable();
       }
     }
-    console.log(this.productForm.valid);
-    console.log(this.dialogData);
+  }
+  onSubmit() {
+    if (!this.dialogData) {
+      if (this.productForm.valid) {
+        this.dialogRef.close(this.productForm.value);
+      } else this.snack.open('Entree non valide', 'OK');
+    }
+    if (this.dialogData) {
+      if (this.dialogData.action === 'update') {
+        if (this.productForm.valid) {
+          this.dialogRef.close(this.productForm.value);
+        } else this.snack.open('Entree non valide', 'OK', { duration: 2000 });
+      }
+      if (this.dialogData.action === 'delete') {
+        this.dialogRef.close('deleted!');
+      }
+    }
   }
 }
