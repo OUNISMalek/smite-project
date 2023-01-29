@@ -49,12 +49,24 @@ export class FournisseurComponent implements OnInit {
     const deleteDialog = this.dialog.open(DialogFournisseurComponent, {
       data: { action: 'delete', form: fr },
     });
-    deleteDialog.afterClosed().subscribe((req: FournisseurRes) => {
-      console.log(req);
-      this.api.deleteFournisseurById(req.id).subscribe((res) => {
-        console.log(res);
-        return res;
-      });
+    deleteDialog.afterClosed().subscribe((req) => {
+      if (req === 'deleted') {
+        this.api.deleteFournisseurById(fr.id).subscribe(() => {
+          this.getAllProducts();
+        });
+      }
+    });
+  }
+  updateFournisseur(fr: FournisseurRes) {
+    const updateDialog = this.dialog.open(DialogFournisseurComponent, {
+      data: { action: 'update', form: fr },
+    });
+    updateDialog.afterClosed().subscribe((req: FournisseurRes) => {
+      if (req) {
+        this.api.updateFournisseur(req, req.id).subscribe(() => {
+          this.getAllProducts();
+        });
+      }
     });
   }
 }

@@ -22,6 +22,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DialogChargeComponent } from './dialog-charge/dialog-charge.component';
 import { ChargeComponent } from './charge/charge.component';
@@ -36,7 +38,7 @@ import { Charge1DialogComponent } from './charge1-dialog/charge1-dialog.componen
 import { Charge2DialogComponent } from './charge2-dialog/charge2-dialog.component';
 import { Charge3DialogComponent } from './charge3-dialog/charge3-dialog.component';
 import { Charge4DialogComponent } from './charge4-dialog/charge4-dialog.component';
-import { FactureLoaderComponent } from './facture/facture.loader.component';
+import { FactureLoaderComponent } from './facture-loader/facture.loader.component';
 import { Dashboard1Component } from './dashboard1/dashboard1.component';
 import { Facture1Component } from './facture1/facture1.component';
 import { ClientComponent } from './client/client.component';
@@ -102,6 +104,7 @@ import { DialogClientComponent } from './dialog-client/dialog-client.component';
     MatCardModule,
     MatExpansionModule,
     MatSnackBarModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

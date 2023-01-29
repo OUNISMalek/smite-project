@@ -10,7 +10,7 @@ import { Charge1Component } from './charge1/charge1.component';
 import { Charge2Component } from './charge2/charge2.component';
 import { Charge3Component } from './charge3/charge3.component';
 import { Charge4Component } from './charge4/charge4.component';
-import { FactureLoaderComponent } from './facture/facture.loader.component';
+import { FactureLoaderComponent } from './facture-loader/facture.loader.component';
 import { Dashboard1Component } from './dashboard1/dashboard1.component';
 import { Facture1Component } from './facture1/facture1.component';
 import { FournisseurComponent } from './fournisseur/fournisseur.component';

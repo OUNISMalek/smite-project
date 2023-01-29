@@ -1,8 +1,6 @@
 <div class="container">
   <div class="action-buttons">
-    <button mat-stroked-button (click)="addClient()">
-      Ajouter Client
-    </button>
+    <button mat-stroked-button (click)="addClient()">Ajouter Client</button>
   </div>
   <ng-container *ngIf="clients$ | async as result">
     <ng-container [ngSwitch]="result.dataState">
@@ -10,8 +8,8 @@
         Chargement en cours .....
       </ng-container>
       <ng-container *ngSwitchCase="DataStateEnum.ERROR">
-        Une erreur est survenue: {{ result.errorMessage }}</ng-container
-      >
+        Une erreur est survenue :{{ result.errorMessage }}
+      </ng-container>
       <ng-container *ngSwitchCase="DataStateEnum.LOADED">
         <mat-card class="title-card">
           <mat-card-title>Liste des Clients</mat-card-title>

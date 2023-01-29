@@ -21,27 +21,38 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Type facture</mat-label>
-      <mat-select formControlName="typeFacture" placeholder="Type">
-        <mat-option value="FACTURE_CLIENT">A</mat-option>
-        <mat-option value="FACTURE_FOURNISSEUR">B</mat-option>
+      <mat-select formControlName="typeFacture" placeholder="Type facture">
+        <mat-option [value]="TypeFacture.FACTURE_CLIENT"
+          >Facture client</mat-option
+        >
+        <mat-option [value]="TypeFacture.FACTURE_FOURNISSEUR"
+          >Facture fournisseur</mat-option
+        >
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Client ou Fournisseur</mat-label>
-      <input formControlName="idClient" matInput placeholder="Quantité" />
+      <input
+        formControlName="idClient"
+        matInput
+        type="text"
+        [matAutocomplete]="auto"
+        placeholder="Client/Fournisseur"
+      />
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let client of filteredClients$ | async"
+          [value]="client.id"
+        >
+          {{ client.nom }}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
 
     <div mat-dialog-action>
       <button mat-raised-button mat-dialog-close>Close</button>
-      <button
-        style="margin-left: 8px"
-        mat-raised-button
-        color="primary"
-        [mat-dialog-close]="newFactureForm.value"
-      >
-        OK
-      </button>
+      <button mat-raised-button color="primary" (click)="onSubmit()">OK</button>
     </div>
     &nbsp;
   </form>

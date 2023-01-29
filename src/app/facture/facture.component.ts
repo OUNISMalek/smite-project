@@ -1,13 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
@@ -17,21 +8,13 @@ import {
   AbstractControl,
   FormArray,
   FormBuilder,
-  FormControl,
   FormGroup,
-  Validators,
 } from '@angular/forms';
-import {
-  FactureReq,
-  FactureRes,
-  NewFactData,
-  NewLigneFact,
-} from '../models/facture.model';
+import { FactureReq, NewFactData, NewLigneFact } from '../models/facture.model';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map, startWith, tap } from 'rxjs';
+import { map } from 'rxjs';
 import { DataStateService } from '../state/datastate.service';
-import { AppContext, AppEvent } from '../state/data.model';
+import { AppEvent } from '../state/data.model';
 import { DialogFactureComponent } from '../dialog-facture/dialog-facture.component';
 
 @Component({
@@ -69,7 +52,6 @@ export class FactureComponent implements OnInit {
     total: '',
   };
   factureForm!: FormGroup;
-  // @Output() uploadedFacture = new EventEmitter<string>();
 
   constructor(
     private dialog: MatDialog,

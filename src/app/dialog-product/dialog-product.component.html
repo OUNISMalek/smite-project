@@ -35,7 +35,17 @@
         formControlName="idFournisseur"
         matInput
         placeholder="Fournisseur"
+        type="text"
+        [matAutocomplete]="auto"
       />
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let fr of filteredFournisseurs$ | async"
+          [value]="fr.id"
+        >
+          {{ fr.nom }}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
   </form>
 </div>

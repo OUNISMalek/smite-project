@@ -20,11 +20,11 @@ export class DialogFournisseurComponent implements OnInit {
 
   ngOnInit(): void {
     this.fournisseurForm = this.fb.group({
-      id: [''],
+      id: [null],
       nom: ['', Validators.required],
       description: ['', Validators.required],
       matFiscale: ['', Validators.required],
-      dateCreation: [''],
+      dateCreation: [null],
     });
     this.fournisseurForm.controls['id'].disable();
     this.fournisseurForm.controls['dateCreation'].disable();
@@ -59,7 +59,7 @@ export class DialogFournisseurComponent implements OnInit {
         } else this.snack.open('Entree non valide', 'OK');
       }
       if (this.dialogData.action === 'delete') {
-        this.dialogRef.close('deleted!');
+        this.dialogRef.close('deleted');
       }
     }
   }

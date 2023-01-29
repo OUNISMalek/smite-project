@@ -27,9 +27,9 @@ export interface LigneFactureRes {
   idFacture: number;
 }
 export enum TypeFacture {
-  FACTURE_CLIENT,
-  FACTURE_FOURNISSEUR,
-  AUTRE_FACTURE,
+  FACTURE_CLIENT = 'Facture Client',
+  FACTURE_FOURNISSEUR = 'Facture Fournisseur',
+  AUTRE_FACTURE = 'Autre Facture',
 }
 export enum EtatFacture {
   NON_VALIDEE,

@@ -37,21 +37,23 @@ export class StockComponent implements OnInit {
   addProduct() {
     const dialogRef = this.dialog.open(DialogProductComponent);
     dialogRef.afterClosed().subscribe((req: Produit) => {
-      this.api.addProduct(req).subscribe((res) => {
-        this.getAllProducts();
-      });
+      if (req) {
+        this.api.addProduct(req).subscribe(() => {
+          this.getAllProducts();
+        });
+      }
     });
   }
   deleteProduct(product: Produit) {
     const deleteDialog = this.dialog.open(DialogProductComponent, {
       data: { action: 'delete', form: product },
     });
-    deleteDialog.afterClosed().subscribe((req: Produit) => {
-      console.log(req);
-      this.api.deleteProductById(req.id).subscribe((res) => {
-        console.log(res);
-        return res;
-      });
+    deleteDialog.afterClosed().subscribe((req) => {
+      if (req === 'deleted') {
+        this.api.deleteProductById(product.id).subscribe(() => {
+          this.getAllProducts();
+        });
+      }
     });
   }
   editProduct(product: Produit) {
@@ -59,10 +61,11 @@ export class StockComponent implements OnInit {
       data: { action: 'update', form: product },
     });
     editDialog.afterClosed().subscribe((req: Produit) => {
-      console.log(req);
-      this.api.updateProduct(req, req.id).subscribe((res) => {
-        console.log(res);
-      });
+      if (req) {
+        this.api.updateProduct(req, req.id).subscribe(() => {
+          this.getAllProducts();
+        });
+      }
     });
   }
 }

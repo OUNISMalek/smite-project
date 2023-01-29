@@ -3,11 +3,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, of, startWith } from 'rxjs';
-import { InitialFactureDialogComponent } from '../initial.facture.dialog/initial.facture.dialog.component';
+import { InitialFactureDialogComponent } from 'src/app/initial.facture.dialog/initial.facture.dialog.component';
 import { FactureReq, FactureRes, NewFactData } from '../models/facture.model';
-import { ServfactureService } from '../services/servfacture.service';
-import { AppContext, AppDataState, DataStateEnum } from '../state/data.model';
-import { DataStateService } from '../state/datastate.service';
+import { ServfactureService } from 'src/app/services/servfacture.service';
+import {
+  AppContext,
+  AppDataState,
+  DataStateEnum,
+} from 'src/app/state/data.model';
+import { DataStateService } from 'src/app/state/datastate.service';
 
 @Component({
   selector: 'app-facture-loader',
@@ -16,7 +20,7 @@ import { DataStateService } from '../state/datastate.service';
 })
 export class FactureLoaderComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion;
-  loading: boolean = true;
+  DataStateEnum: typeof DataStateEnum = DataStateEnum;
   requestNewFacture?: NewFactData;
   facture!: FactureReq;
   factures$!: Observable<AppDataState<FactureRes[]>>;
@@ -34,31 +38,34 @@ export class FactureLoaderComponent implements OnInit {
   getAllFactures() {
     this.factures$ = this.servfacture.getAllFacture().pipe(
       map((data) => {
-        this.loading = false;
         return { dataState: DataStateEnum.LOADED, data: data };
       }),
       startWith({ dataState: DataStateEnum.LOADING }),
       catchError((e) => {
-        return of({ dataState: DataStateEnum.ERROR, errorMessage: e.message });
+        return of({ dataState: DataStateEnum.ERROR, errorMessage: e.error });
       })
     );
   }
   newFacture() {
     const dialogRef = this.dialog.open(InitialFactureDialogComponent);
     dialogRef.afterClosed().subscribe((res) => {
-      this.requestNewFacture = res;
-      this.loadNewFacture();
-      this.router.navigateByUrl('/facture');
+      if (res) {
+        this.requestNewFacture = res;
+        this.dataService.publishEvent({
+          appContext: AppContext.NEWFACTURE,
+          payload: this.requestNewFacture,
+        });
+        this.router.navigateByUrl('/facture');
+      }
     });
-    
   }
 
-  loadNewFacture() {
-    return this.dataService.publishEvent({
-      appContext: AppContext.NEWFACTURE,
-      payload: this.requestNewFacture,
-    });
-  }
+  // loadNewFacture() {
+  //   return this.dataService.publishEvent({
+  //     appContext: AppContext.NEWFACTURE,
+  //     payload: this.requestNewFacture,
+  //   });
+  // }
   // loadFactureByNumber(s: string) {
   //   let n = Number(s);
   //   this.factures$ = this.servfacture.getFacture(n);
