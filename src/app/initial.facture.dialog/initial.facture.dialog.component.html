@@ -43,7 +43,7 @@
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
         <mat-option
           *ngFor="let client of filteredClients$ | async"
-          [value]="client.id"
+          [value]="client.nom"
         >
           {{ client.nom }}
         </mat-option>

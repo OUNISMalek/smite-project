@@ -110,8 +110,8 @@ export class FactureComponent implements OnInit {
       map((res) => {
         if (res) {
           this.ligneFactures.at(index).setValue(res);
+          this.table.renderRows();
         }
-        this.table.renderRows();
       })
     );
   }

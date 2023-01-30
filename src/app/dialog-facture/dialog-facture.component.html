@@ -3,7 +3,20 @@
   <form [formGroup]="ligneForm">
     <mat-form-field appearance="outline">
       <mat-label>Code</mat-label>
-      <input formControlName="code" matInput placeholder="Ref" />
+      <input
+        [matAutocomplete]="auto"
+        formControlName="code"
+        matInput
+        placeholder="Reference produit"
+      />
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let fr of filteredProducts$ | async"
+          [value]="fr.ref"
+        >
+          {{ fr.ref }}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
     &nbsp;
 
@@ -47,14 +60,7 @@
 
     <div mat-dialog-action>
       <button mat-raised-button mat-dialog-close>Annuler</button>
-      <button
-        mat-raised-button
-        color="primary"
-        [disabled]="!ligneForm.valid"
-        [mat-dialog-close]="ligneForm.value"
-      >
-        OK
-      </button>
+      <button mat-raised-button color="primary" (click)="onSubmit()">OK</button>
     </div>
     &nbsp;
   </form>

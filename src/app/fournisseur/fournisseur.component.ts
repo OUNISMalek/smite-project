@@ -63,7 +63,7 @@ export class FournisseurComponent implements OnInit {
     });
     updateDialog.afterClosed().subscribe((req: FournisseurRes) => {
       if (req) {
-        this.api.updateFournisseur(req, req.id).subscribe(() => {
+        this.api.updateFournisseur(req, fr.id).subscribe(() => {
           this.getAllProducts();
         });
       }

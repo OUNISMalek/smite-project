@@ -37,6 +37,9 @@
               <mat-panel-title> {{ p.description }} </mat-panel-title>
               <mat-panel-description>
                 <p>Date de creation : {{ p.dateCreation }}</p>
+                <button (click)="updateFournisseur(p)">
+                  <mat-icon>edit</mat-icon>
+                </button>
                 <button (click)="deleteFournisseur(p)">
                   <mat-icon>delete</mat-icon>
                 </button>

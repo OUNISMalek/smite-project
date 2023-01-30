@@ -41,6 +41,7 @@ export class DialogProductComponent implements OnInit {
       image: [''],
       idFournisseur: [null, Validators.required],
     });
+    this.productForm.controls['id'].disable();
     if (this.dialogData) {
       if (this.dialogData.action === 'update') {
         this.actionBtn = 'Mettre à jour';

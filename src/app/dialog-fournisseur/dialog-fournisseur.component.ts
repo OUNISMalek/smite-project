@@ -29,6 +29,17 @@ export class DialogFournisseurComponent implements OnInit {
     this.fournisseurForm.controls['id'].disable();
     this.fournisseurForm.controls['dateCreation'].disable();
     if (this.dialogData) {
+      if (this.dialogData.action === 'update') {
+        this.actionBtn = 'Mettre à jour';
+        this.fournisseurForm.patchValue({
+          id: this.dialogData.form.id,
+          nom: this.dialogData.form.nom,
+          description: this.dialogData.form.description,
+          matFiscale: this.dialogData.form.matFiscale,
+          dateCreation: this.dialogData.form.dateCreation,
+        });
+        this.fournisseurForm.controls['id'].disable();
+      }
       if (this.dialogData.action === 'delete') {
         this.actionBtn = 'Supprimer';
         this.fournisseurForm.patchValue({

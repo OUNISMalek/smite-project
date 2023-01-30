@@ -36,7 +36,7 @@ export class InitialFactureDialogComponent implements OnInit {
       codeFacture: ['', Validators.required],
       dateFacture: ['', Validators.required],
       typeFacture: [null, Validators.required],
-      idClient: [null, Validators.required],
+      idClient: ['', Validators.required],
     });
     this.filteredClients$ = this.newFactureForm.controls[
       'idClient'
