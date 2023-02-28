@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FactureReq, FactureRes } from '../models/facture.model';
+import { FactureReq, FactureRes } from '../../models/facture.model';
 import { environment } from 'src/environments/environment.prod';
 import { Observable } from 'rxjs';
 @Injectable({

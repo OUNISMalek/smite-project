@@ -10,9 +10,9 @@ import {
   startWith,
   switchMap,
 } from 'rxjs';
-import { ClientRes } from '../models/client.model';
-import { NewFactData, TypeFacture } from '../models/facture.model';
-import { ClientService } from '../services/client.service';
+import { ClientRes } from 'src/app/models/client.model';
+import { TypeFacture, NewFactData } from 'src/app/models/facture.model';
+import { ClientService } from 'src/app/shared/services/client.service';
 
 @Component({
   selector: 'app-initial.facture.dialog',

@@ -10,8 +10,8 @@ import {
   startWith,
   switchMap,
 } from 'rxjs';
-import { Produit } from '../models/produit.model';
-import { ApiService } from '../services/api.service';
+import { Produit } from 'src/app/models/produit.model';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-dialog-facture',

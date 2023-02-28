@@ -3,15 +3,15 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
 import { Router } from '@angular/router';
 import { catchError, map, Observable, of, startWith } from 'rxjs';
-import { InitialFactureDialogComponent } from 'src/app/initial.facture.dialog/initial.facture.dialog.component';
-import { FactureReq, FactureRes, NewFactData } from '../models/facture.model';
-import { ServfactureService } from 'src/app/services/servfacture.service';
+import { NewFactData, FactureReq, FactureRes } from 'src/app/models/facture.model';
+import { ServfactureService } from 'src/app/shared/services/servfacture.service';
 import {
   AppContext,
   AppDataState,
   DataStateEnum,
-} from 'src/app/state/data.model';
-import { DataStateService } from 'src/app/state/datastate.service';
+} from 'src/app/shared/state/data.model';
+import { DataStateService } from 'src/app/shared/state/datastate.service';
+import { InitialFactureDialogComponent } from '../dialogs/initial.facture.dialog/initial.facture.dialog.component';
 
 @Component({
   selector: 'app-facture-loader',

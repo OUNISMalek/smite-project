@@ -4,8 +4,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { Servch3Service } from '../services/servch3.service';
-import { Charge3DialogComponent } from '../charge3-dialog/charge3-dialog.component';
+import { Servch3Service } from 'src/app/shared/services/servch3.service';
+import { Charge3DialogComponent } from '../dialogs/charge3-dialog/charge3-dialog.component';
 
 @Component({
   selector: 'app-charge3',

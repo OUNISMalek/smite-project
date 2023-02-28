@@ -10,12 +10,12 @@ import {
   FormBuilder,
   FormGroup,
 } from '@angular/forms';
-import { FactureReq, NewFactData, NewLigneFact } from '../models/facture.model';
 import { MatDialog } from '@angular/material/dialog';
 import { map } from 'rxjs';
-import { DataStateService } from '../state/datastate.service';
-import { AppEvent } from '../state/data.model';
-import { DialogFactureComponent } from '../dialog-facture/dialog-facture.component';
+import { FactureReq, NewFactData, NewLigneFact } from 'src/app/models/facture.model';
+import { AppEvent } from 'src/app/shared/state/data.model';
+import { DataStateService } from 'src/app/shared/state/datastate.service';
+import { DialogFactureComponent } from '../dialogs/dialog-facture/dialog-facture.component';
 
 @Component({
   selector: 'app-facture',

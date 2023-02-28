@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
 import { catchError, map, Observable, of, startWith } from 'rxjs';
+import { Produit } from 'src/app/models/produit.model';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { AppDataState, DataStateEnum } from 'src/app/shared/state/data.model';
 import { DialogProductComponent } from '../dialogs/dialog-product/dialog-product.component';
-import { Produit } from '../models/produit.model';
-import { ApiService } from '../services/api.service';
-import { AppDataState, DataStateEnum } from '../state/data.model';
 
 @Component({
   selector: 'app-stock',

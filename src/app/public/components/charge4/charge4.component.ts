@@ -4,8 +4,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { Servch4Service } from '../services/servch4.service';
-import { Charge4DialogComponent } from '../charge4-dialog/charge4-dialog.component';
+import { Servch4Service } from 'src/app/shared/services/servch4.service';
+import { Charge4DialogComponent } from '../dialogs/charge4-dialog/charge4-dialog.component';
 
 
 @Component({

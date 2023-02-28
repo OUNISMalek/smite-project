@@ -4,8 +4,8 @@ import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Servch1Service } from '../services/servch1.service';
-import { Charge1DialogComponent } from '../charge1-dialog/charge1-dialog.component';
+import { Servch1Service } from 'src/app/shared/services/servch1.service';
+import { Charge1DialogComponent } from '../dialogs/charge1-dialog/charge1-dialog.component';
 
 @Component({
   selector: 'app-charge1',

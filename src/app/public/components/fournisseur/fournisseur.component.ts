@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
 import { Observable, map, startWith, catchError, of } from 'rxjs';
-import { DialogFournisseurComponent } from '../dialog-fournisseur/dialog-fournisseur.component';
-import { FournisseurReq, FournisseurRes } from '../models/fournisseur.model';
-import { FournisseurService } from '../services/fournisseur.service';
-import { AppDataState, DataStateEnum } from '../state/data.model';
+import { FournisseurRes, FournisseurReq } from 'src/app/models/fournisseur.model';
+import { FournisseurService } from 'src/app/shared/services/fournisseur.service';
+import { AppDataState, DataStateEnum } from 'src/app/shared/state/data.model';
+import { DialogFournisseurComponent } from '../dialogs/dialog-fournisseur/dialog-fournisseur.component';
 
 @Component({
   selector: 'app-fournisseur',

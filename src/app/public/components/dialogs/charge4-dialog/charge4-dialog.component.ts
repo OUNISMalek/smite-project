@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {FormGroup,FormBuilder,Validators} from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Servch4Service } from '../services/servch4.service';
+import { Servch4Service } from 'src/app/shared/services/servch4.service';
 
 @Component({
   selector: 'app-charge4-dialog',

@@ -4,8 +4,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { Servch2Service } from '../services/servch2.service';
-import { Charge2DialogComponent } from '../charge2-dialog/charge2-dialog.component';
+import { Servch2Service } from 'src/app/shared/services/servch2.service';
+import { Charge2DialogComponent } from '../dialogs/charge2-dialog/charge2-dialog.component';
 
 @Component({
   selector: 'app-charge2',

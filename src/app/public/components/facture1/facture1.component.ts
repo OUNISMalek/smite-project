@@ -21,7 +21,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { FactureReq } from '../models/facture.model';
+import { FactureReq } from 'src/app/models/facture.model';
 
 @Component({
   selector: 'app-facture1',

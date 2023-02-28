@@ -2,10 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion } from '@angular/material/expansion';
 import { Observable, map, startWith, catchError, of } from 'rxjs';
-import { DialogClientComponent } from '../dialog-client/dialog-client.component';
-import { ClientReq, ClientRes } from '../models/client.model';
-import { ClientService } from '../services/client.service';
-import { AppDataState, DataStateEnum } from '../state/data.model';
+import { ClientRes, ClientReq } from 'src/app/models/client.model';
+import { ClientService } from 'src/app/shared/services/client.service';
+import { AppDataState, DataStateEnum } from 'src/app/shared/state/data.model';
+import { DialogClientComponent } from '../dialogs/dialog-client/dialog-client.component';
 
 @Component({
   selector: 'app-client',

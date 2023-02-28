@@ -10,8 +10,8 @@ import {
   startWith,
   switchMap,
 } from 'rxjs';
-import { FournisseurRes } from '../models/fournisseur.model';
-import { FournisseurService } from '../services/fournisseur.service';
+import { FournisseurRes } from 'src/app/models/fournisseur.model';
+import { FournisseurService } from 'src/app/shared/services/fournisseur.service';
 
 @Component({
   selector: 'app-dialog-product',
