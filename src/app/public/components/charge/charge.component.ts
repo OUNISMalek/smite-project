@@ -5,7 +5,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DialogChargeComponent } from '../dialog-charge/dialog-charge.component';
-import { ServchargeService } from '../services/servcharge.service';
+import { ServchargeService } from '../../../services/servcharge.service';
 
 @Component({
   selector: 'app-charge',

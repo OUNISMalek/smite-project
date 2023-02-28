@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { StockComponent } from './stock/stock.component';
-import { ChargeComponent } from './charge/charge.component';
+import { ChargeComponent } from './public/components/charge/charge.component';
 import { FactureComponent } from './facture/facture.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Charge1Component } from './charge1/charge1.component';
