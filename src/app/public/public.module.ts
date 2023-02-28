@@ -17,7 +17,6 @@ import { InventaireComponent } from './components/inventaire/inventaire.componen
 import { StockComponent } from './components/stock/stock.component';
 import { AngularMaterialModule } from '../shared/angular-material/angular-material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Charge1DialogComponent } from './components/dialogs/charge1-dialog/charge1-dialog.component';
 import { Charge2DialogComponent } from './components/dialogs/charge2-dialog/charge2-dialog.component';
 import { Charge3DialogComponent } from './components/dialogs/charge3-dialog/charge3-dialog.component';
@@ -30,8 +29,6 @@ import { DialogFournisseurComponent } from './components/dialogs/dialog-fourniss
 import { DialogComponent } from './components/dialogs/dialog/dialog.component';
 import { InitialFactureDialogComponent } from './components/dialogs/initial.facture.dialog/initial.facture.dialog.component';
 import { PublicRoutingModule } from './public-routing.module';
-
-
 
 @NgModule({
   declarations: [
@@ -64,11 +61,10 @@ import { PublicRoutingModule } from './public-routing.module';
   ],
   imports: [
     CommonModule,
-    AngularMaterialModule,
-    BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
     PublicRoutingModule,
-  ]
+    AngularMaterialModule,
+  ],
 })
-export class PublicModule { }
+export class PublicModule {}
