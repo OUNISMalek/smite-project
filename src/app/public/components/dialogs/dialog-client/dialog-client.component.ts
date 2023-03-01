@@ -23,9 +23,8 @@ export class DialogClientComponent implements OnInit {
       id: [''],
       tel: ['', Validators.required],
       nom: ['', Validators.required],
-      mail: ['', Validators.required],
-      addresse1: ['', Validators.required],
-      addresse2: ['', Validators.required],
+      mail: ['', Validators.email],
+      addresse: [''],
       codePostale: [''],
       dateCreation: [''],
     });
@@ -39,8 +38,7 @@ export class DialogClientComponent implements OnInit {
           tel: this.dialogData.form.tel,
           nom: this.dialogData.form.nom,
           mail: this.dialogData.form.mail,
-          addresse1: this.dialogData.form.addresse1,
-          addresse2: this.dialogData.form.addresse2,
+          addresse: this.dialogData.form.addresse,
           codePostale: this.dialogData.form.codePostale,
           dateCreation: this.dialogData.form.dateCreation,
         });
@@ -54,8 +52,7 @@ export class DialogClientComponent implements OnInit {
           tel: this.dialogData.form.tel,
           nom: this.dialogData.form.nom,
           mail: this.dialogData.form.mail,
-          addresse1: this.dialogData.form.addresse1,
-          addresse2: this.dialogData.form.addresse2,
+          addresse1: this.dialogData.form.addresse,
           codePostale: this.dialogData.form.codePostale,
           dateCreation: this.dialogData.form.dateCreation,
         });
@@ -63,8 +60,7 @@ export class DialogClientComponent implements OnInit {
         this.clientForm.controls['tel'].disable();
         this.clientForm.controls['nom'].disable();
         this.clientForm.controls['mail'].disable();
-        this.clientForm.controls['addresse1'].disable();
-        this.clientForm.controls['addresse2'].disable();
+        this.clientForm.controls['addresse'].disable();
         this.clientForm.controls['codePostale'].disable();
         this.clientForm.controls['dateCreation'].disable();
       }

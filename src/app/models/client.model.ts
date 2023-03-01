@@ -5,8 +5,7 @@ export interface ClientReq {
   photo: string;
   mail: string;
   tel: string;
-  addresse1: string;
-  addresse2: string;
+  addresse: string;
   codePostale: string;
   gouvernorat: string;
   pays: string;
@@ -17,8 +16,7 @@ export interface ClientRes {
   photo: string;
   mail: string;
   tel: string;
-  addresse1: string;
-  addresse2: string;
+  addresse: string;
   codePostale: string;
   gouvernorat: string;
   pays: string;

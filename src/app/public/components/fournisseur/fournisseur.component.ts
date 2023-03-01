@@ -38,7 +38,6 @@ export class FournisseurComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogFournisseurComponent);
     dialogRef.afterClosed().subscribe((req: FournisseurReq) => {
       if (req) {
-        console.log(req);
         this.api.addFournisseur(req).subscribe(() => {
           this.getAllProducts();
         });

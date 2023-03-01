@@ -23,7 +23,7 @@ export class DialogFournisseurComponent implements OnInit {
       id: [null],
       nom: ['', Validators.required],
       description: ['', Validators.required],
-      matFiscale: ['', Validators.required],
+      matFiscale: [''],
       dateCreation: [null],
     });
     this.fournisseurForm.controls['id'].disable();
