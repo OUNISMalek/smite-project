@@ -9,7 +9,7 @@
       </ng-container>
       <ng-container *ngSwitchCase="DataStateEnum.LOADED">
         <mat-card class="title-card">
-          <mat-card-title>Liste des Produits en stock</mat-card-title>
+          <mat-card-title>Liste des factures</mat-card-title>
           <mat-card-content>
             <div class="action-buttons">
               <mat-card>
@@ -83,15 +83,3 @@
   </ng-container>
 </div>
 
-<!-- 
-    <mat-card class="dashboard">
-        <mat-card>
-            <input type="text" matInput #box> &nbsp; &nbsp;
-            <button (click)="loadFactureByNumber(box.value)" class="mat-elevation-z2" mat-stroked-button color="warn">Charger Facture</button>
-        </mat-card>
-    </mat-card>
-    <ng-container>
-        <ng-container *ngIf="facture$ | async as facture">
-            <app-facture (uploadedFacture)="saveFacture($event)" [facture]="facture"></app-facture>
-        </ng-container>
-    </ng-container> -->

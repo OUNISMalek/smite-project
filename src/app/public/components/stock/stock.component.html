@@ -68,7 +68,7 @@
               </mat-card>
               <mat-card>
                 <mat-card-title>Fournisseur</mat-card-title>
-                <mat-card-content>{{ p.idFournisseur }}</mat-card-content>
+                <mat-card-content>{{ getFournisseurById(p.idFournisseur)|async }}</mat-card-content>
               </mat-card>
             </div>
           </mat-expansion-panel>
