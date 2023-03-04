@@ -7,4 +7,5 @@ export interface Produit {
   tauxTva?: number;
   image?: string;
   idFournisseur: number;
+  nomFournisseur?: string;
 }

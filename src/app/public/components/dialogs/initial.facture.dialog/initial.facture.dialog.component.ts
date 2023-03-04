@@ -13,6 +13,8 @@ import {
 import { ClientRes } from 'src/app/models/client.model';
 import { TypeFacture, NewFactData } from 'src/app/models/facture.model';
 import { ClientService } from 'src/app/shared/services/client.service';
+import {FournisseurRes} from "../../../../models/fournisseur.model";
+import {FournisseurService} from "../../../../shared/services/fournisseur.service";
 
 @Component({
   selector: 'app-initial.facture.dialog',
@@ -23,12 +25,14 @@ export class InitialFactureDialogComponent implements OnInit {
   newFactureForm!: FormGroup;
   TypeFacture: typeof TypeFacture = TypeFacture;
   filteredClients$!: Observable<ClientRes[]>;
+  filteredFournisseurs$!: Observable<FournisseurRes[]>;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: NewFactData,
     public dialogRef: MatDialogRef<InitialFactureDialogComponent>,
     private snack: MatSnackBar,
     private fb: FormBuilder,
-    private clientApi: ClientService
+    private clientApi: ClientService,
+    private FournisseurApi: FournisseurService
   ) {}
 
   ngOnInit(): void {
@@ -48,10 +52,29 @@ export class InitialFactureDialogComponent implements OnInit {
         return this._filter(val || '');
       })
     );
+    this.filteredFournisseurs$ = this.newFactureForm.controls[
+      'idClient'
+      ].valueChanges.pipe(
+      startWith(''),
+      debounceTime(400),
+      distinctUntilChanged(),
+      switchMap((val: string) => {
+        return this._filterFournisseur(val || '');
+      })
+    );
   }
 
   private _filter(keyword: string): Observable<ClientRes[]> {
     return this.clientApi.getAllClient().pipe(
+      map((res) =>
+        res.filter((opt) => {
+          return opt.nom.toLowerCase().includes(keyword);
+        })
+      )
+    );
+  }
+  private _filterFournisseur(keyword: string): Observable<FournisseurRes[]> {
+    return this.FournisseurApi.getAllFournisseur().pipe(
       map((res) =>
         res.filter((opt) => {
           return opt.nom.toLowerCase().includes(keyword);

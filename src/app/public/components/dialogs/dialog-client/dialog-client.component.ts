@@ -21,7 +21,7 @@ export class DialogClientComponent implements OnInit {
   ngOnInit(): void {
     this.clientForm = this.fb.group({
       id: [''],
-      tel: ['', Validators.required],
+      tel: [''],
       nom: ['', Validators.required],
       mail: ['', Validators.email],
       addresse: [''],

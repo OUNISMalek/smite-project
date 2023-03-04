@@ -1,7 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {Component, Inject, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {
   debounceTime,
   distinctUntilChanged,
@@ -10,8 +10,8 @@ import {
   startWith,
   switchMap,
 } from 'rxjs';
-import { Produit } from 'src/app/models/produit.model';
-import { ApiService } from 'src/app/shared/services/api.service';
+import {Produit} from 'src/app/models/produit.model';
+import {ApiService} from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-dialog-facture',
@@ -21,34 +21,28 @@ import { ApiService } from 'src/app/shared/services/api.service';
 export class DialogFactureComponent implements OnInit {
   ligneForm!: FormGroup;
   filteredProducts$!: Observable<Produit[]>;
+
   constructor(
     private formBuilder: FormBuilder,
     private produitApi: ApiService,
     @Inject(MAT_DIALOG_DATA) public editData: any,
     private dialogRef: MatDialogRef<DialogFactureComponent>,
     private snack: MatSnackBar
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.ligneForm = this.formBuilder.group({
       code: ['', Validators.required],
       service: ['', Validators.required],
-      quantite: ['', Validators.required],
-      prix_uni_ht: ['', Validators.required],
+      quantite: [null, Validators.required],
+      prix_uni_ht: [null, Validators.required],
       prix_ht: ['', Validators.required],
       tva: ['', Validators.required],
       total: ['', Validators.required],
     });
     if (this.editData) {
-      this.ligneForm.controls['code'].setValue(this.editData.code);
-      this.ligneForm.controls['service'].setValue(this.editData.service);
-      this.ligneForm.controls['quantite'].setValue(this.editData.quantite);
-      this.ligneForm.controls['prix_uni_ht'].setValue(
-        this.editData.prix_uni_ht
-      );
-      this.ligneForm.controls['prix_ht'].setValue(this.editData.prix_ht);
-      this.ligneForm.controls['tva'].setValue(this.editData.tva);
-      this.ligneForm.controls['total'].setValue(this.editData.total);
+      this.setForm(this.editData);
     }
 
     this.filteredProducts$ = this.ligneForm.controls['code'].valueChanges.pipe(
@@ -70,11 +64,48 @@ export class DialogFactureComponent implements OnInit {
       )
     );
   }
+  updateForm(p:Produit){
+    this.ligneForm.controls['code'].setValue(p.ref);
+    this.ligneForm.controls['service'].setValue(p.nom);
+    this.ligneForm.controls['quantite'].setValue(p.quantite);
+    this.ligneForm.controls['prix_uni_ht'].setValue(p.prix);
+    this.ligneForm.controls['tva'].setValue(p.tauxTva);
+    this.ligneForm.controls['prix_ht'].setValue(this.getPrixTotale());
+    this.ligneForm.controls['total'].setValue(this.getPrixTtc());
+  }
+
+  setForm(p: any) {
+    this.ligneForm.controls['code'].setValue(p.code);
+    this.ligneForm.controls['service'].setValue(p.service);
+    this.ligneForm.controls['quantite'].setValue(p.quantite);
+    this.ligneForm.controls['prix_uni_ht'].setValue(
+      p.prix_uni_ht
+    );
+    this.ligneForm.controls['prix_ht'].setValue(p.prix_ht);
+    this.ligneForm.controls['tva'].setValue(p.tva);
+    this.ligneForm.controls['total'].setValue(p.total);
+  }
+  getPrix(){
+    return this.ligneForm.controls['prix_uni_ht'].value;
+  }
+  getQuantite(){
+    return this.ligneForm.controls['quantite'].value;
+  }
+  getPrixTotale(){
+    return Number(this.getPrix()) * Number(this.getQuantite());
+  }
+  getTva(){
+    return this.ligneForm.controls['tva'].value;
+  }
+  getPrixTtc(){
+    return this.getPrixTotale() + (Number(this.getTva()) * this.getPrixTotale() / 100);
+  }
+
   onSubmit() {
     if (this.ligneForm.valid) {
       this.dialogRef.close(this.ligneForm.value);
     } else {
-      this.snack.open('Entree invalide!', 'OK', { duration: 1000 });
+      this.snack.open('Entree invalide!', 'OK', {duration: 1000});
     }
   }
 }

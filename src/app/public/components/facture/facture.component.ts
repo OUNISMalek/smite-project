@@ -11,7 +11,6 @@ import {
   FormGroup,
 } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { map } from 'rxjs';
 import { FactureReq, NewFactData, NewLigneFact } from 'src/app/models/facture.model';
 import { AppEvent } from 'src/app/shared/state/data.model';
 import { DataStateService } from 'src/app/shared/state/datastate.service';
@@ -84,14 +83,13 @@ export class FactureComponent implements OnInit {
   }
 
   loadFacture(factureData: NewFactData): FormGroup {
-    let factureForm = this.fb.group({
+    return this.fb.group({
       ligneFactures: this.fb.array([this.fb.group(this.newLigne)]),
       codeFacture: this.fb.control(factureData.codeFacture),
       dateFacture: this.fb.control(factureData.datFacture),
       typeFacture: this.fb.control(factureData.typeFacture),
       idClient: this.fb.control(factureData.idClient),
     });
-    return factureForm;
   }
 
   get ligneFactures() {
@@ -106,13 +104,13 @@ export class FactureComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogFactureComponent, {
       data: rowData,
     });
-    dialogRef.afterClosed().pipe(
-      map((res) => {
+    dialogRef.afterClosed().subscribe(
+      (res:NewLigneFact) => {
         if (res) {
           this.ligneFactures.at(index).setValue(res);
           this.table.renderRows();
         }
-      })
+      }
     );
   }
   resetLigneFactures() {
@@ -121,15 +119,18 @@ export class FactureComponent implements OnInit {
   }
   addLigneFacture() {
     const dialogRef = this.dialog.open(DialogFactureComponent);
-    dialogRef.afterClosed().pipe(
-      map((res) => {
+    dialogRef.afterClosed().subscribe(
+      (res:NewLigneFact) => {
         if (res) {
           this.newLigne = res;
           this.ligneFactures.push(this.fb.group(this.newLigne));
           this.table.renderRows();
         }
-      })
+      }
     );
+  }
+  calculateTotales(){
+
   }
 
   onSubmit() {

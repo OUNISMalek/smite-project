@@ -8,8 +8,6 @@
     <mat-form-field appearance="fill">
       <mat-label>Choose a date</mat-label>
       <input
-        formControlName="date"
-        matInput
         [matDatepicker]="picker"
         matInput
         formControlName="dateFacture"
@@ -41,16 +39,26 @@
         placeholder="Client/Fournisseur"
       />
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+       <ng-container *ngIf="newFactureForm.controls['typeFacture'].value === TypeFacture.FACTURE_CLIENT">
         <mat-option
           *ngFor="let client of filteredClients$ | async"
           [value]="client.nom"
         >
           {{ client.nom }}
         </mat-option>
+       </ng-container>
+        <ng-container *ngIf="newFactureForm.controls['typeFacture'].value === TypeFacture.FACTURE_FOURNISSEUR">
+          <mat-option
+            *ngFor="let fournisseur of filteredFournisseurs$ | async"
+            [value]="fournisseur.nom"
+          >
+            {{ fournisseur.nom }}
+          </mat-option>
+        </ng-container>
       </mat-autocomplete>
     </mat-form-field>
 
-    <div mat-dialog-action>
+    <div mat-dialog-actions>
       <button mat-raised-button mat-dialog-close>Close</button>
       <button mat-raised-button color="primary" (click)="onSubmit()">OK</button>
     </div>

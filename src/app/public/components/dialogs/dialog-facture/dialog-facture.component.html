@@ -13,6 +13,7 @@
         <mat-option
           *ngFor="let fr of filteredProducts$ | async"
           [value]="fr.ref"
+          (onSelectionChange)="updateForm(fr)"
         >
           {{ fr.ref }}
         </mat-option>
@@ -58,7 +59,7 @@
     </mat-form-field>
     &nbsp;
 
-    <div mat-dialog-action>
+    <div mat-dialog-actions>
       <button mat-raised-button mat-dialog-close>Annuler</button>
       <button mat-raised-button color="primary" (click)="onSubmit()">OK</button>
     </div>
