@@ -2,7 +2,7 @@
   <ng-container *ngIf="factures$ | async as result">
     <ng-container [ngSwitch]="result.dataState">
       <ng-container *ngSwitchCase="DataStateEnum.LOADING">
-        Chargement en cours .....
+        <mat-spinner></mat-spinner>
       </ng-container>
       <ng-container *ngSwitchCase="DataStateEnum.ERROR">
         Une erreur est survenue :{{ result.errorMessage }}

@@ -38,7 +38,7 @@ export class InitialFactureDialogComponent implements OnInit {
   ngOnInit(): void {
     this.newFactureForm = this.fb.group({
       codeFacture: ['', Validators.required],
-      dateFacture: ['', Validators.required],
+      dateFacture: [null, Validators.required],
       typeFacture: [null, Validators.required],
       idClient: ['', Validators.required],
     });

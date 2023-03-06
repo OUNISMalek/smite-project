@@ -41,15 +41,7 @@ export class FactureComponent implements OnInit {
   pdfName: string = 'Facture';
   facture: FactureReq = {} as FactureReq;
   newFacture?: NewFactData;
-  newLigne: NewLigneFact = {
-    code: '',
-    service: '',
-    quantite: '',
-    prix_uni_ht: '',
-    prix_ht: '',
-    tva: '',
-    total: '',
-  };
+  newLigne: NewLigneFact | undefined;
   factureForm!: FormGroup;
 
   constructor(
@@ -73,7 +65,7 @@ export class FactureComponent implements OnInit {
       this.factureForm = this.loadFacture(this.newFacture);
     } else {
       this.factureForm = this.fb.group({
-        ligneFactures: this.fb.array([this.fb.group(this.newLigne)]),
+        ligneFactures: this.fb.array([]),
         codeFacture: this.fb.control(''),
         dateFacture: this.fb.control(''),
         typeFacture: this.fb.control(''),
@@ -84,9 +76,9 @@ export class FactureComponent implements OnInit {
 
   loadFacture(factureData: NewFactData): FormGroup {
     return this.fb.group({
-      ligneFactures: this.fb.array([this.fb.group(this.newLigne)]),
+      ligneFactures: this.fb.array([]),
       codeFacture: this.fb.control(factureData.codeFacture),
-      dateFacture: this.fb.control(factureData.datFacture),
+      dateFacture: this.fb.control(factureData.dateFacture),
       typeFacture: this.fb.control(factureData.typeFacture),
       idClient: this.fb.control(factureData.idClient),
     });

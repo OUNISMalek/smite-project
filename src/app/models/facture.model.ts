@@ -38,7 +38,7 @@ export enum EtatFacture {
 }
 export interface NewFactData {
   codeFacture: string;
-  datFacture: Date;
+  dateFacture: Date;
   typeFacture: TypeFacture;
   idClient: number;
 }
