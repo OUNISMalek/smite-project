@@ -4,56 +4,70 @@
 // }
 
 .mat-form-field {
-  font-size: 14px;
-  width: 300px;
+  padding: 0;
+  margin: 0;
+  width: 95%;
+  height: 50%;
 }
 
+
 .container {
-  display: flex;
+  //display: flex;
   max-width: 1200px;
   margin: 0px auto;
 }
-
-.description {
-  justify-content: left;
-  padding: auto;
-}
-.contact {
-  justify-content: right;
-  padding: auto;
+.facture-info {
+  display: block;
+  margin: 25px auto;
 }
 .entete {
   display: flex;
   justify-content: space-between;
-  padding: auto;
+  margin: auto;
+}
+.description {
+  justify-content: left;
   margin: auto;
 }
 
-.facture-info {
-  //  display: flex;
-   margin: 15px auto;
-  // justify-content: space-evenly;
-  // margin: 5px auto;
+.contact {
+  justify-content: right;
+  margin: auto;
+}
+
+
+.facture-metadata{
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .table-facture {
+  table-layout: fixed;
   width: 95%;
-  margin: auto;
   th {
     font-weight: bold;
     font-style: oblique;
     color: black;
   }
 }
+//.mat-footer-row,
+//.mat-header-row,
+//.mat-row {
+//  min-width: 10%;
+//}
+
+
 .mat-column-code {
   border-right: 1px solid currentColor;
   text-align: center;
-  width: 20px;
   padding-right: 10px;
 }
+
 .mat-column-service {
   padding-left: 10px;
 }
+
 .mat-column-action {
   border-left: 1px solid currentColor;
   padding-left: 10px;
@@ -71,19 +85,16 @@
 }
 
 .sommes-totales {
-  width: 70%;
   margin-left: 70%;
-  display: flex;
-  flex-direction: column;
+  margin-top: 20px;
 }
-p,
-h3 {
-  display: flex;
+
+.signature {
   margin-top: 60px;
-  justify-content: right;
+  margin-left: 70%;
+  width: 30%;
 }
-.facture {
-  display: flex;
-  justify-content: left;
-  padding: auto;
+
+.somme-lettre {
+  margin-top: 10px;
 }
