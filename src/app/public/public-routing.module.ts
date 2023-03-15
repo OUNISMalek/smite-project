@@ -13,6 +13,7 @@ import { FactureComponent } from './components/facture/facture.component';
 import { Facture1Component } from './components/facture1/facture1.component';
 import { FournisseurComponent } from './components/fournisseur/fournisseur.component';
 import { StockComponent } from './components/stock/stock.component';
+import { FactureLoader1Component } from './components/facture.loader1/facture.loader1.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'stock', pathMatch: 'full' },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'facture1', component: Facture1Component },
   { path: 'fournisseur', component: FournisseurComponent },
   { path: 'client', component: ClientComponent },
+  { path: 'factureloader1', component: FactureLoader1Component},
 ];
 
 @NgModule({

@@ -29,6 +29,7 @@ import { DialogFournisseurComponent } from './components/dialogs/dialog-fourniss
 import { DialogComponent } from './components/dialogs/dialog/dialog.component';
 import { InitialFactureDialogComponent } from './components/dialogs/initial.facture.dialog/initial.facture.dialog.component';
 import { PublicRoutingModule } from './public-routing.module';
+import { FactureLoader1Component } from './components/facture.loader1/facture.loader1.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { PublicRoutingModule } from './public-routing.module';
     DialogConfirmationComponent,
     DialogFournisseurComponent,
     DialogClientComponent,
+    FactureLoader1Component
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,86 @@
+<div class="container">
+    <ng-container *ngIf="factures$ | async as result">
+      <ng-container [ngSwitch]="result.dataState">
+        <ng-container *ngSwitchCase="DataStateEnum.LOADING">
+          <mat-spinner></mat-spinner>
+        </ng-container>
+        <ng-container *ngSwitchCase="DataStateEnum.ERROR">
+          Une erreur est survenue :{{ result.errorMessage }}
+        </ng-container>
+        <ng-container *ngSwitchCase="DataStateEnum.LOADED">
+          <mat-card class="title-card">
+            <mat-card-title>Liste des factures</mat-card-title>
+            <mat-card-content>
+              <div class="action-buttons">
+                <mat-card>
+                  <button
+                    (click)="newFacture()"
+                    class="mat-elevation-z2"
+                    mat-stroked-button
+                    color="primary"
+                  >
+                    Ajouter Nouvelle Facture
+                  </button>
+                </mat-card>
+              </div>
+              <div class="collapse-action-buttons">
+                <button mat-button (click)="accordion.openAll()">
+                  Expand All
+                </button>
+                <button mat-button (click)="accordion.closeAll()">
+                  Collapse All
+                </button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+          <mat-accordion class="headers-align" multi>
+            <mat-expansion-panel
+              *ngFor="let p of result.data"
+              style="display: contents"
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-title> {{ p.codeFacture }} </mat-panel-title>
+                <mat-panel-title> {{ p.dateFacture }} </mat-panel-title>
+                <mat-panel-description>
+                  <p>ID Client : {{ p.idClient }}</p>
+                  <mat-icon>laptop_windows</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <div class="expansion-panel-items">
+                <mat-card>
+                  <mat-card-title>Id</mat-card-title>
+                  <mat-card-content>{{ p.id }}</mat-card-content>
+                </mat-card>
+                <mat-card>
+                  <mat-card-title>Reference Facture</mat-card-title>
+                  <mat-card-content>{{ p.codeFacture }}</mat-card-content>
+                </mat-card>
+                <mat-card>
+                  <mat-card-title>Date Facture</mat-card-title>
+                  <mat-card-content>{{ p.dateFacture }}</mat-card-content>
+                </mat-card>
+                <mat-card>
+                  <mat-card-title>ID Client</mat-card-title>
+                  <mat-card-content>{{ p.idClient }}</mat-card-content>
+                </mat-card>
+                <mat-card>
+                  <mat-card-title>Type Facture</mat-card-title>
+                  <mat-card-content>{{ p.typeFacture }}</mat-card-content>
+                </mat-card>
+                <mat-card>
+                  <mat-card-title>Etat Facture</mat-card-title>
+                  <mat-card-content>{{ p.etatFacture }}</mat-card-content>
+                </mat-card>
+                <mat-card>
+                  <mat-card-title>Produits</mat-card-title>
+                  <mat-card-content>{{ p.ligneFactures }}</mat-card-content>
+                </mat-card>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </div>
+  
+  
